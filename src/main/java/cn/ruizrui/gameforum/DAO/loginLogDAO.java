@@ -1,4 +1,4 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 
 public interface loginLogDAO {
 	public int getDay();

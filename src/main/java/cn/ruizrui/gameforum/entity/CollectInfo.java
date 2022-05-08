@@ -1,4 +1,4 @@
-package entity;
+package cn.ruizrui.gameforum.entity;
 
 public class CollectInfo {
 private String game_name;

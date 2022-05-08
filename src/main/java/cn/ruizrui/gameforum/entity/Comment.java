@@ -1,4 +1,4 @@
-package entity;
+package cn.ruizrui.gameforum.entity;
 
 import java.sql.Timestamp;
 

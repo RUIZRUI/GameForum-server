@@ -1,7 +1,7 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 import java.util.ArrayList;
 
-import entity.*;
+import cn.ruizrui.gameforum.entity.*;
 public interface AndroidDAO {
 	ArrayList<AndroidGame>  getAllGames();
 	AndroidGame getGameByName(String game_name);

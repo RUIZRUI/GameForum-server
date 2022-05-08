@@ -1,10 +1,10 @@
-package proxyPattern;
+package cn.ruizrui.gameforum.proxyPattern;
 
 import java.util.ArrayList;
 
-import entity.CollectInfo;
-import entity.Comment;
-import entity.UserEntity;
+import cn.ruizrui.gameforum.entity.CollectInfo;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.entity.UserEntity;
 
 public class Proxy implements User{
 	String priority;

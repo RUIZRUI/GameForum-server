@@ -1,11 +1,11 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
 
-import DAO.impl.CommentDAOImpl;
-import DAO.impl.SingleDAOImpl;
-import entity.Comment;
-import entity.SingleGame;
+import cn.ruizrui.gameforum.DAO.impl.CommentDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.SingleDAOImpl;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.entity.SingleGame;
 
 public class SingleConcretWindow {
 	SingleDAOImpl si=new SingleDAOImpl();

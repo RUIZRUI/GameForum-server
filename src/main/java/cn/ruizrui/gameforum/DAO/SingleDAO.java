@@ -1,7 +1,7 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 import java.util.ArrayList;
 
-import entity.SingleGame;
+import cn.ruizrui.gameforum.entity.SingleGame;
 
 public interface SingleDAO {
 	public ArrayList<SingleGame> getAllGames();

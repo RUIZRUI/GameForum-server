@@ -1,4 +1,4 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DAO.CollectDAO;
-import DAO.baseDAO;
-import entity.*;
-import factoryMethodPattern.AbstractFactory;
-import factoryMethodPattern.AndroidGameCreator;
-import factoryMethodPattern.IosGameCreator;
-import factoryMethodPattern.OnlineGameCreator;
-import factoryMethodPattern.SingleGameCreator;
-import tools.JudgeGame;
+import cn.ruizrui.gameforum.DAO.CollectDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.*;
+import cn.ruizrui.gameforum.factoryMethodPattern.AbstractFactory;
+import cn.ruizrui.gameforum.factoryMethodPattern.AndroidGameCreator;
+import cn.ruizrui.gameforum.factoryMethodPattern.IosGameCreator;
+import cn.ruizrui.gameforum.factoryMethodPattern.OnlineGameCreator;
+import cn.ruizrui.gameforum.factoryMethodPattern.SingleGameCreator;
+import cn.ruizrui.gameforum.tools.JudgeGame;
 
 public class CollectDAOImpl extends baseDAO implements CollectDAO{
 

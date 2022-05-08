@@ -1,8 +1,8 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 
 import java.util.ArrayList;
 
-import entity.UserEntity;
+import cn.ruizrui.gameforum.entity.UserEntity;
 
 public interface RelationshipDAO {
 	public ArrayList<UserEntity> getMyFans(String userName);

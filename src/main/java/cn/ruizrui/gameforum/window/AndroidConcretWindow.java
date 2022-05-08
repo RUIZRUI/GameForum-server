@@ -1,11 +1,11 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
 
-import DAO.impl.AndroidDAOImpl;
-import DAO.impl.CommentDAOImpl;
-import entity.AndroidGame;
-import entity.Comment;
+import cn.ruizrui.gameforum.DAO.impl.AndroidDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.CommentDAOImpl;
+import cn.ruizrui.gameforum.entity.AndroidGame;
+import cn.ruizrui.gameforum.entity.Comment;
 
 public class AndroidConcretWindow {
 	AndroidDAOImpl ai=new AndroidDAOImpl();

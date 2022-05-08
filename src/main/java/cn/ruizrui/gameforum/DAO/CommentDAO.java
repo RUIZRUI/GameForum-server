@@ -1,8 +1,8 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 
 import java.util.ArrayList;
 
-import entity.Comment;
+import cn.ruizrui.gameforum.entity.Comment;
 
 public interface CommentDAO {
 	public ArrayList<Comment> getCommentsToMe(String userName);

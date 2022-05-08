@@ -1,4 +1,4 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DAO.IosDAO;
-import DAO.baseDAO;
-import entity.IosGame;
+import cn.ruizrui.gameforum.DAO.IosDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.IosGame;
 
 public class IosDAOImpl extends baseDAO implements IosDAO{
 

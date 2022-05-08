@@ -1,13 +1,13 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DAO.RelationshipDAO;
-import DAO.baseDAO;
-import entity.UserEntity;
+import cn.ruizrui.gameforum.DAO.RelationshipDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.UserEntity;
 
 public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 

@@ -1,6 +1,6 @@
-package DAO.impl;
-import DAO.baseDAO;
-import entity.OnlineGame;
+package cn.ruizrui.gameforum.DAO.impl;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.OnlineGame;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DAO.OnlineDAO;
+import cn.ruizrui.gameforum.DAO.OnlineDAO;
 public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override

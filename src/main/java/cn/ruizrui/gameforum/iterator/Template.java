@@ -1,4 +1,4 @@
-package iterator;
+package cn.ruizrui.gameforum.iterator;
 
 import java.util.ArrayList;
 public abstract class Template<T> {

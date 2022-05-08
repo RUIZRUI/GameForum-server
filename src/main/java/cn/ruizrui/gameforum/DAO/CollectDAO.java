@@ -1,7 +1,7 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 import java.util.ArrayList;
 
-import entity.CollectInfo;
+import cn.ruizrui.gameforum.entity.CollectInfo;
 public interface CollectDAO {
 	public ArrayList<CollectInfo> getCollectionByName(String userName);
 	public boolean cancelCollection(String userName,String gameName);

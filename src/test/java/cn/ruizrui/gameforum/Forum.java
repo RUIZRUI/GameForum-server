@@ -1,14 +1,14 @@
-package test;
-import entity.*;
+package cn.ruizrui.gameforum;
+import cn.ruizrui.gameforum.entity.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.impl.*;
-import entity.*;
-import iterator.impl.AndroidIteratorImpl;
-import proxyPattern.Proxy;
-import window.AndroidConcretWindow;
-import window.AndroidMainWindow;
+import cn.ruizrui.gameforum.DAO.impl.*;
+import cn.ruizrui.gameforum.entity.*;
+import cn.ruizrui.gameforum.iterator.impl.AndroidIteratorImpl;
+import cn.ruizrui.gameforum.proxyPattern.Proxy;
+import cn.ruizrui.gameforum.window.AndroidConcretWindow;
+import cn.ruizrui.gameforum.window.AndroidMainWindow;
 public class Forum {
 	public static void main(String[] args) {
 		// TODO �Զ����ɵķ������

@@ -1,5 +1,5 @@
-package DAO;
-import entity.*;
+package cn.ruizrui.gameforum.DAO;
+import cn.ruizrui.gameforum.entity.*;
 import java.util.ArrayList;
 
 public interface OnlineDAO {

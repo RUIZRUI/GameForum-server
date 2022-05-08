@@ -1,4 +1,4 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import DAO.baseDAO;
-import DAO.loginLogDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.DAO.loginLogDAO;
 
 public class LoginLogDAOImpl extends baseDAO implements loginLogDAO{
 

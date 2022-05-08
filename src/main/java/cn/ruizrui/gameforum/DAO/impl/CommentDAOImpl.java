@@ -1,13 +1,13 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import DAO.CommentDAO;
-import DAO.baseDAO;
-import entity.Comment;
-import tools.JudgeGame;
+import cn.ruizrui.gameforum.DAO.CommentDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.tools.JudgeGame;
 
 public class CommentDAOImpl extends baseDAO implements CommentDAO{
 

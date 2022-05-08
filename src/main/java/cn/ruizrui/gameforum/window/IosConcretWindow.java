@@ -1,10 +1,10 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
-import DAO.impl.CommentDAOImpl;
-import DAO.impl.IosDAOImpl;
-import entity.Comment;
-import entity.IosGame;
+import cn.ruizrui.gameforum.DAO.impl.CommentDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.IosDAOImpl;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.entity.IosGame;
 
 public class IosConcretWindow {
 	IosDAOImpl ai=new IosDAOImpl();

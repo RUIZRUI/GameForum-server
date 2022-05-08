@@ -1,4 +1,4 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;

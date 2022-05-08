@@ -1,12 +1,12 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
 
-import DAO.impl.CommentDAOImpl;
-import DAO.impl.OnlineDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.CommentDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.OnlineDAOImpl;
 
-import entity.Comment;
-import entity.OnlineGame;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.entity.OnlineGame;
 
 public class OnlineConcretWindow {
 	OnlineDAOImpl ai=new OnlineDAOImpl();

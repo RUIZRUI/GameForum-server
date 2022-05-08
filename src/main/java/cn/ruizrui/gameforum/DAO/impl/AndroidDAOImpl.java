@@ -1,11 +1,11 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import DAO.*;
-import entity.AndroidGame;
+import cn.ruizrui.gameforum.DAO.*;
+import cn.ruizrui.gameforum.entity.AndroidGame;
 
 public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 

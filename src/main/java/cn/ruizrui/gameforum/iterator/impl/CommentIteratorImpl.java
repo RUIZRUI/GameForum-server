@@ -1,8 +1,8 @@
-package iterator.impl;
+package cn.ruizrui.gameforum.iterator.impl;
 
 import java.util.ArrayList;
-import entity.Comment;
-import iterator.Template;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.iterator.Template;
 public class CommentIteratorImpl extends Template<Comment>{
 	public CommentIteratorImpl(int index,ArrayList<Comment> comments) {
 		this.index=index;

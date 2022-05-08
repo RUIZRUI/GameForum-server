@@ -1,9 +1,9 @@
-package aggregate;
+package cn.ruizrui.gameforum.aggregate;
 
 import java.util.ArrayList;
 
-import entity.Comment;
-import iterator.impl.CommentIteratorImpl;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.iterator.impl.CommentIteratorImpl;
 
 public class Comments extends AbstractComments{
 	ArrayList<Comment> comments;

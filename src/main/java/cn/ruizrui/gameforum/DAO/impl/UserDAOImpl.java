@@ -1,4 +1,4 @@
-package DAO.impl;
+package cn.ruizrui.gameforum.DAO.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DAO.UserDAO;
-import DAO.baseDAO;
-import entity.UserEntity;
+import cn.ruizrui.gameforum.DAO.UserDAO;
+import cn.ruizrui.gameforum.DAO.baseDAO;
+import cn.ruizrui.gameforum.entity.UserEntity;
 
 public class UserDAOImpl extends baseDAO implements UserDAO{
 

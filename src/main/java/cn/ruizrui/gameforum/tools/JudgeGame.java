@@ -1,12 +1,12 @@
-package tools;
-import DAO.impl.AndroidDAOImpl;
-import DAO.impl.IosDAOImpl;
-import DAO.impl.OnlineDAOImpl;
-import DAO.impl.SingleDAOImpl;
-import entity.AndroidGame;
-import entity.IosGame;
-import entity.OnlineGame;
-import entity.SingleGame;
+package cn.ruizrui.gameforum.tools;
+import cn.ruizrui.gameforum.DAO.impl.AndroidDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.IosDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.OnlineDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.SingleDAOImpl;
+import cn.ruizrui.gameforum.entity.AndroidGame;
+import cn.ruizrui.gameforum.entity.IosGame;
+import cn.ruizrui.gameforum.entity.OnlineGame;
+import cn.ruizrui.gameforum.entity.SingleGame;
 
 public class JudgeGame {
 	AndroidDAOImpl ai=new AndroidDAOImpl();
@@ -38,7 +38,7 @@ public String deleteGame(String gameName,int belong) {
 	break;
 	case 3:oi.deleteGame(gameName);
 	break;
-	default:return "É¾³ýÊ§°Ü";
+	default:return "É¾ï¿½ï¿½Ê§ï¿½ï¿½";
 	}
 	return "success";
 }

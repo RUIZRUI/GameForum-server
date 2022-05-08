@@ -1,7 +1,7 @@
-package iterator.impl;
+package cn.ruizrui.gameforum.iterator.impl;
 import java.util.ArrayList;
-import entity.AndroidGame;
-import iterator.Template;
+import cn.ruizrui.gameforum.entity.AndroidGame;
+import cn.ruizrui.gameforum.iterator.Template;
 
 public class AndroidIteratorImpl extends Template<AndroidGame>{
 	public AndroidIteratorImpl(int index,ArrayList<AndroidGame> games){

@@ -1,8 +1,8 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
-import DAO.impl.SingleDAOImpl;
-import entity.SingleGame;
+import cn.ruizrui.gameforum.DAO.impl.SingleDAOImpl;
+import cn.ruizrui.gameforum.entity.SingleGame;
 
 public class SingleMainWindow {
 	SingleDAOImpl si=new SingleDAOImpl();

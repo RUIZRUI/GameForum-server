@@ -1,4 +1,4 @@
-package entity;
+package cn.ruizrui.gameforum.entity;
 public class HostGame {
 	protected String game_id;
 	protected String game_name;

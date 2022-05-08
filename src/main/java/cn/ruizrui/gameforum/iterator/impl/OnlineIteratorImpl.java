@@ -1,8 +1,8 @@
-package iterator.impl;
+package cn.ruizrui.gameforum.iterator.impl;
 import java.util.ArrayList;
 
-import entity.OnlineGame;
-import iterator.Template;
+import cn.ruizrui.gameforum.entity.OnlineGame;
+import cn.ruizrui.gameforum.iterator.Template;
 public class OnlineIteratorImpl extends Template<OnlineGame>{
 	OnlineIteratorImpl(int index,ArrayList<OnlineGame> games){
 		this.index=index;

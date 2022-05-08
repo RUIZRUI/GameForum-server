@@ -1,16 +1,16 @@
-package proxyPattern;
+package cn.ruizrui.gameforum.proxyPattern;
 
 import java.util.ArrayList;
 
-import DAO.impl.CollectDAOImpl;
-import DAO.impl.CommentDAOImpl;
-import DAO.impl.LoginLogDAOImpl;
-import DAO.impl.RelationShipDAOImp;
-import DAO.impl.UserDAOImpl;
-import entity.CollectInfo;
-import entity.Comment;
-import entity.UserEntity;
-import tools.JudgeGame;
+import cn.ruizrui.gameforum.DAO.impl.CollectDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.CommentDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.LoginLogDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.RelationShipDAOImp;
+import cn.ruizrui.gameforum.DAO.impl.UserDAOImpl;
+import cn.ruizrui.gameforum.entity.CollectInfo;
+import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.entity.UserEntity;
+import cn.ruizrui.gameforum.tools.JudgeGame;
 
 public class RealUser implements User{
 	ArrayList<UserEntity> fans=new ArrayList<UserEntity>();

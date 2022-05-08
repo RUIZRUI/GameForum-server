@@ -1,8 +1,8 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
-import DAO.impl.OnlineDAOImpl;
-import entity.OnlineGame;
+import cn.ruizrui.gameforum.DAO.impl.OnlineDAOImpl;
+import cn.ruizrui.gameforum.entity.OnlineGame;
 
 public class OnlineMainWindow {
 	OnlineDAOImpl oi=new OnlineDAOImpl();

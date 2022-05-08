@@ -1,22 +1,23 @@
-package factoryMethodPattern;
-import entity.*;
+package cn.ruizrui.gameforum.factoryMethodPattern;
+import cn.ruizrui.gameforum.entity.*;
+
 public class AndroidGameCreator extends MobileGameCreator{
 
 	@Override
 	public MobileGame createMobileGame() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return new AndroidGame();
 	}
 
 	@Override
 	public HostGame createHostGame() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 
 	@Override
 	public MobileGame createMoblieGame() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 }

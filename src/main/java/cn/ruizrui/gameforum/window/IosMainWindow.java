@@ -1,9 +1,9 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
-import DAO.impl.IosDAOImpl;
+import cn.ruizrui.gameforum.DAO.impl.IosDAOImpl;
 
-import entity.IosGame;
+import cn.ruizrui.gameforum.entity.IosGame;
 
 public class IosMainWindow {
 	IosDAOImpl ii=new IosDAOImpl();

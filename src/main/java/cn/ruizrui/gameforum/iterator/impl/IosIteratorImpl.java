@@ -1,8 +1,8 @@
-package iterator.impl;
+package cn.ruizrui.gameforum.iterator.impl;
 import java.util.ArrayList;
 
-import entity.IosGame;
-import iterator.Template;
+import cn.ruizrui.gameforum.entity.IosGame;
+import cn.ruizrui.gameforum.iterator.Template;
 public class IosIteratorImpl extends Template<IosGame>{
 	IosIteratorImpl(int index,ArrayList<IosGame> games){
 		this.index=index;

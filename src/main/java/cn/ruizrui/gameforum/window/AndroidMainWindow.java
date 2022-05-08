@@ -1,9 +1,9 @@
-package window;
+package cn.ruizrui.gameforum.window;
 
 import java.util.ArrayList;
 
-import DAO.impl.AndroidDAOImpl;
-import entity.AndroidGame;
+import cn.ruizrui.gameforum.DAO.impl.AndroidDAOImpl;
+import cn.ruizrui.gameforum.entity.AndroidGame;
 
 public class AndroidMainWindow {
 	AndroidDAOImpl ai=new AndroidDAOImpl();

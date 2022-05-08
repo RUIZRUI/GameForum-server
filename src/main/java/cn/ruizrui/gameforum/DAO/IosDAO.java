@@ -1,7 +1,7 @@
-package DAO;
+package cn.ruizrui.gameforum.DAO;
 import java.util.ArrayList;
 
-import entity.IosGame;
+import cn.ruizrui.gameforum.entity.IosGame;
 public interface IosDAO {
  public ArrayList<IosGame> getAllGames();
  public IosGame getGameByName(String game_name);

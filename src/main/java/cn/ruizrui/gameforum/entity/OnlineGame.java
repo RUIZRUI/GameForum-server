@@ -1,4 +1,4 @@
-package entity;
+package cn.ruizrui.gameforum.entity;
 
 public class OnlineGame extends HostGame{
 	private int game_hope_num;
