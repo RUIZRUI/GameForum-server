@@ -1,17 +1,11 @@
 package cn.ruizrui.gameforum;
-import cn.ruizrui.gameforum.entity.*;
-import java.util.ArrayList;
-import java.util.List;
 
-import cn.ruizrui.gameforum.DAO.impl.*;
-import cn.ruizrui.gameforum.entity.*;
-import cn.ruizrui.gameforum.iterator.impl.AndroidIteratorImpl;
-import cn.ruizrui.gameforum.proxyPattern.Proxy;
-import cn.ruizrui.gameforum.window.AndroidConcretWindow;
-import cn.ruizrui.gameforum.window.AndroidMainWindow;
+import cn.ruizrui.gameforum.repository.impl.*;
+import cn.ruizrui.gameforum.proxy.Proxy;
+import cn.ruizrui.gameforum.service.AndroidConcretWindow;
+
 public class Forum {
 	public static void main(String[] args) {
-		// TODO �Զ����ɵķ������
 		AndroidDAOImpl a=new AndroidDAOImpl();
 		AndroidConcretWindow aw=new AndroidConcretWindow();
 		UserDAOImpl ui =new UserDAOImpl();

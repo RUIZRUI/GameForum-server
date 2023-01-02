@@ -1,6 +1,6 @@
 package cn.ruizrui.gameforum.iterator.impl;
 import java.util.ArrayList;
-import cn.ruizrui.gameforum.entity.AndroidGame;
+import cn.ruizrui.gameforum.model.AndroidGame;
 import cn.ruizrui.gameforum.iterator.Template;
 
 public class AndroidIteratorImpl extends Template<AndroidGame>{

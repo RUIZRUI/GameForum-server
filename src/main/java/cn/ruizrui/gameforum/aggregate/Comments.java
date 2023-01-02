@@ -2,7 +2,7 @@ package cn.ruizrui.gameforum.aggregate;
 
 import java.util.ArrayList;
 
-import cn.ruizrui.gameforum.entity.Comment;
+import cn.ruizrui.gameforum.model.Comment;
 import cn.ruizrui.gameforum.iterator.impl.CommentIteratorImpl;
 
 public class Comments extends AbstractComments{
