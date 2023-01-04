@@ -1,7 +1,7 @@
 package cn.ruizrui.gameforum;
 
 import cn.ruizrui.gameforum.repository.impl.*;
-import cn.ruizrui.gameforum.proxy.Proxy;
+import cn.ruizrui.gameforum.proxy.ProxyUser;
 import cn.ruizrui.gameforum.service.AndroidConcretWindow;
 
 public class Forum {
@@ -43,7 +43,7 @@ public class Forum {
 			System.out.println(cs.get(i).getComment_name());
 		}
 		*/
-		Proxy p=new Proxy("管理员");
+		ProxyUser p=new ProxyUser("管理员");
 		System.out.println(p.cleanCommentFromMe("54321"));
 		
 		/*

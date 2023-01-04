@@ -8,16 +8,16 @@ import java.util.ArrayList;
 
 import cn.ruizrui.gameforum.repository.UserDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
-import cn.ruizrui.gameforum.model.UserEntity;
+import cn.ruizrui.gameforum.model.User;
 
 public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
-	public UserEntity getByName(String userName) {
+	public User getByName(String userName) {
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		UserEntity usertemp=new UserEntity();
+		User usertemp=new User();
 		String sql="select * from user where user_name=?";
 	try {
 		pstmt=con.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 		return usertemp;
 	}
 
-	public boolean addUser(UserEntity ue) {
+	public boolean addUser(User ue) {
 		LoginLogDAOImpl li=new LoginLogDAOImpl();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -68,8 +68,8 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 		closeAll(con,pstmt,rs);
 		return true;
 	}
-	public boolean addUserAll(UserEntity ue) {
-		// TODO �Զ����ɵķ������
+	public boolean addUserAll(User ue) {
+		// TODO ??????????????
 		LoginLogDAOImpl li=new LoginLogDAOImpl();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -100,8 +100,8 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 
 	@Override
-	public boolean updateUser(UserEntity ue) {
-		// TODO �Զ����ɵķ������
+	public boolean updateUser(User ue) {
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -125,7 +125,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public int getUserId(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		int userid=0;
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -150,7 +150,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public String getUserName(int userId) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		String  user_name=null;
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -175,7 +175,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public int getUserNumber() {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -197,7 +197,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setStatusOn(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -218,7 +218,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setStatusDown(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -238,7 +238,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean deleteUser(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -257,7 +257,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean promoteUser(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -277,7 +277,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setUserAvater(String userName, String imgUrl) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -295,9 +295,9 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 
 	@Override
-	public ArrayList<UserEntity> getTotalUsers() {
-		// TODO �Զ����ɵķ������
-		ArrayList<UserEntity> allUsers=new ArrayList<UserEntity>();
+	public ArrayList<User> getTotalUsers() {
+		// TODO ??????????????
+		ArrayList<User> allUsers=new ArrayList<User>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -307,21 +307,21 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 		pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
-			UserEntity usertemp=new UserEntity();
-				usertemp.setUser_id(rs.getInt("user_id"));
-				usertemp.setPassword(rs.getString("password"));
-				usertemp.setPriority(rs.getString("priority"));
-				usertemp.setFans_number(rs.getInt("fans_number"));
-				usertemp.setLogintime(rs.getTimestamp("logintime"));
-				usertemp.setUser_name(rs.getString("user_name"));
-				usertemp.setPhone(rs.getString("phone"));
-				usertemp.setMail(rs.getString("mail"));
-				usertemp.setStatus(rs.getBoolean("status"));
-				usertemp.setImg(rs.getString("img"));
-				usertemp.setFollow_number(rs.getInt("follow_number"));
-				usertemp.setSex(rs.getString("sex"));
-				usertemp.setBirthdate(rs.getString("birthdate"));
-				allUsers.add(usertemp);
+			User usertemp=new User();
+			usertemp.setUser_id(rs.getInt("user_id"));
+			usertemp.setPassword(rs.getString("password"));
+			usertemp.setPriority(rs.getString("priority"));
+			usertemp.setFans_number(rs.getInt("fans_number"));
+			usertemp.setLogintime(rs.getTimestamp("logintime"));
+			usertemp.setUser_name(rs.getString("user_name"));
+			usertemp.setPhone(rs.getString("phone"));
+			usertemp.setMail(rs.getString("mail"));
+			usertemp.setStatus(rs.getBoolean("status"));
+			usertemp.setImg(rs.getString("img"));
+			usertemp.setFollow_number(rs.getInt("follow_number"));
+			usertemp.setSex(rs.getString("sex"));
+			usertemp.setBirthdate(rs.getString("birthdate"));
+			allUsers.add(usertemp);
 		}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -332,7 +332,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean addFansNumber(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -351,7 +351,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean reduceFansNumber(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -370,7 +370,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean addFollowNumber(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -389,7 +389,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean reduceFollowNumber(String userName) {
-		// TODO �Զ����ɵķ������
+		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

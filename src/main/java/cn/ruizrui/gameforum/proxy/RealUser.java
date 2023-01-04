@@ -9,11 +9,11 @@ import cn.ruizrui.gameforum.repository.impl.RelationShipDAOImp;
 import cn.ruizrui.gameforum.repository.impl.UserDAOImpl;
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
-import cn.ruizrui.gameforum.model.UserEntity;
+import cn.ruizrui.gameforum.model.User;
 import cn.ruizrui.gameforum.helper.JudgeGame;
 
-public class RealUser implements User{
-	ArrayList<UserEntity> fans=new ArrayList<UserEntity>();
+public class RealUser implements UserInterface {
+	ArrayList<User> fans=new ArrayList<User>();
 	RelationShipDAOImp ri=new RelationShipDAOImp();
 	CollectDAOImpl ci=new CollectDAOImpl();
 	CommentDAOImpl cmi=new CommentDAOImpl();
@@ -23,7 +23,7 @@ public class RealUser implements User{
 	
 	public String userLogin(String userName,String userPass) {
 		
-		UserEntity ue=new UserEntity();
+		User ue=new User();
 		ue=ui.getByName(userName);
 		if(userPass.equals(ue.getPassword())){
 			if(ue.getStatus()==true) {
@@ -44,7 +44,7 @@ public class RealUser implements User{
 	@Override
 	public String userRegister(String userName, String userPass, String userEmail, String userPhone) {
 	
-		UserEntity ue=new UserEntity();
+		User ue=new User();
 		ue.setUser_name(userName);
 		ue.setPassword(userPass);
 		if(userEmail!=null){
@@ -57,12 +57,12 @@ public class RealUser implements User{
 		}else{
 			ue.setPhone("未设置");
 		}	
-			ui.addUser(ue);
-			return "success";
+		ui.addUser(ue);
+		return "success";
 	}
 
-	public UserEntity getUserData(String userName){
-		UserEntity ue=ui.getByName(userName);
+	public User getUserData(String userName){
+		User ue=ui.getByName(userName);
 		return ue;
     }
 	public boolean addCollection(String userName,String gameName) {
@@ -72,7 +72,7 @@ public class RealUser implements User{
 
 	public	String setUserData(int userId,String userName,String userEmail,String userPhone,String userSex,String userBirthday){
 		String oldName=ui.getUserName(userId);
-		UserEntity ue=ui.getByName(oldName);
+		User ue=ui.getByName(oldName);
 		if(userName!=null){
 			ue.setUser_name(userName);
 		}
@@ -118,7 +118,7 @@ public class RealUser implements User{
 		return cmi.commentComment(userName, commentId, content);
 	}
 
-	public ArrayList<UserEntity> getFollowUsers(String userName){
+	public ArrayList<User> getFollowUsers(String userName){
 		return ri.getMyFollow(userName);
 		}
 	
@@ -129,7 +129,7 @@ public class RealUser implements User{
 		return "success";
 	}
 
-	public ArrayList<UserEntity> getFanUsers(String userName){
+	public ArrayList<User> getFanUsers(String userName){
 		this.fans=ri.getMyFans(userName);
 		return fans;
 	}
@@ -237,7 +237,7 @@ public class RealUser implements User{
 
 	@Override
 
-	public ArrayList<UserEntity> getTotalUser() {
+	public ArrayList<User> getTotalUser() {
 
 		return ui.getTotalUsers();
 	}
@@ -250,14 +250,14 @@ public class RealUser implements User{
 	}
 	@Override
 	public String addObserver(String userName) {
-		UserEntity ue=ui.getByName(userName);
+		User ue=ui.getByName(userName);
 		fans.add(ue);
 		return "success";
 	}
 	
 	@Override
 	public String removeObserver(String userName) {
-		UserEntity ue=ui.getByName(userName);
+		User ue=ui.getByName(userName);
 		fans.remove(ue);
 		return "success";
 	}

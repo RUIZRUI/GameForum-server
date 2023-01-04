@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 import cn.ruizrui.gameforum.repository.RelationshipDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
-import cn.ruizrui.gameforum.model.UserEntity;
+import cn.ruizrui.gameforum.model.User;
 
 public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 
 	@Override
 	//û�����ã����Ƿ�����user��
-	public ArrayList<UserEntity> getMyFans(String userName) {
+	public ArrayList<User> getMyFans(String userName) {
 		// TODO �Զ����ɵķ������
-		ArrayList<UserEntity> fans=new ArrayList<UserEntity>();
+		ArrayList<User> fans=new ArrayList<User>();
 		ArrayList<String> fans_id=new ArrayList<String>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -34,7 +34,7 @@ public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 				pstmt.setString(1, fans_id.get(i));
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
-					UserEntity ue=new UserEntity();
+					User ue=new User();
 					ue.setUser_name(rs.getString("user_name"));
 					ue.setImg(rs.getString("img"));
 					fans.add(ue);
@@ -48,9 +48,9 @@ public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 	}
 
 	@Override
-	public ArrayList<UserEntity> getMyFollow(String userName) {
+	public ArrayList<User> getMyFollow(String userName) {
 		// TODO �Զ����ɵķ������
-		ArrayList<UserEntity> follows=new ArrayList<UserEntity>();
+		ArrayList<User> follows=new ArrayList<User>();
 		ArrayList<Integer> follows_id=new ArrayList<Integer>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -69,7 +69,7 @@ public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 				pstmt.setInt(1, follows_id.get(i));
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
-					UserEntity ue=new UserEntity();
+					User ue=new User();
 					ue.setUser_name(rs.getString("user_name"));
 					ue.setImg(rs.getString("img"));
 					follows.add(ue);
