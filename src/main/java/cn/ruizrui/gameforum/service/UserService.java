@@ -23,4 +23,23 @@ public class UserService {
     public String addUser(User user){
         return proxy.userRegister(user.getUser_name(), user.getPassword(), user.getMail(), user.getPhone());
     }
+
+    /**
+     * 登录验证
+     * @param userName
+     * @param userPass
+     * @return
+     */
+    public String authUser(String userName, String userPass){
+        return proxy.userLogin(userName, userPass);
+    }
+
+    /**
+     * 获取用户信息
+     * @param userName
+     * @return
+     */
+    public User getUser(String userName){
+        return proxy.getUserData(userName);
+    }
 }

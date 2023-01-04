@@ -58,7 +58,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 			pstmt.setString(3, ue.getUser_name());
 			pstmt.setString(4, ue.getPhone());
 			pstmt.setString(5, ue.getMail());
-			pstmt.setBoolean(6, true);
+			pstmt.setBoolean(6, false);
 			pstmt.executeUpdate();
 		}
 		catch(SQLException e){

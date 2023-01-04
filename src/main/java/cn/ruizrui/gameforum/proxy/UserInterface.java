@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
+import cn.ruizrui.gameforum.model.User;
 
 public interface UserInterface {
 	public boolean addCollection(String userName,String gameName);
@@ -11,7 +12,7 @@ public interface UserInterface {
 	
 	public String userRegister(String userName,String userPass,String userEmail,String userPhone);
 	
-	public cn.ruizrui.gameforum.model.User getUserData(String userName);
+	public User getUserData(String userName);
 	
 	public String setUserData(int userId,String userName,String userEmail,String userPhone,String userSex,String userBirthday);
 	
