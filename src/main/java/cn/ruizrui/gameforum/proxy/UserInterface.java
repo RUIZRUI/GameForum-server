@@ -1,13 +1,14 @@
 package cn.ruizrui.gameforum.proxy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
 import cn.ruizrui.gameforum.model.User;
 
 public interface UserInterface {
-	public boolean addCollection(String userName,String gameName);
+
 	public String userLogin(String userName,String userPass);
 	
 	public String userRegister(String userName,String userPass,String userEmail,String userPhone);
@@ -18,7 +19,9 @@ public interface UserInterface {
 	
 	public String setUserAvater(String userName,String imgUrl);
 	
-	public ArrayList<CollectInfo> getCollectionList(String userName);
+	public List<CollectInfo> getCollectionList(int userId);
+
+	public boolean addCollection(String userName,String gameName);
 	
 	public String cancelCollection(String userName,String gameName);
 	

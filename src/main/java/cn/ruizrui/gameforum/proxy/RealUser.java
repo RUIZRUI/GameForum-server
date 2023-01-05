@@ -1,6 +1,7 @@
 package cn.ruizrui.gameforum.proxy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.ruizrui.gameforum.repository.impl.CollectDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.CommentDAOImpl;
@@ -95,9 +96,9 @@ public class RealUser implements UserInterface {
 		return "success";
 		}
 
-	public ArrayList<CollectInfo> getCollectionList(String userName){
-		ArrayList<CollectInfo> collections=new ArrayList<CollectInfo>();
-		collections=ci.getCollectionByName(userName);
+	public List<CollectInfo> getCollectionList(int userId){
+		List<CollectInfo> collections = new ArrayList<CollectInfo>();
+		collections = ci.getCollectionByUserId(userId);
 		return collections;
 	}
 	

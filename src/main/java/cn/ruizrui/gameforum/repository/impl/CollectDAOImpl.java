@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.ruizrui.gameforum.repository.CollectDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
@@ -19,29 +20,29 @@ import cn.ruizrui.gameforum.helper.JudgeGame;
 public class CollectDAOImpl extends baseDAO implements CollectDAO{
 
 	@Override
-	public ArrayList<CollectInfo> getCollectionByName(String userName) {
+	public List<CollectInfo> getCollectionByUserId(int userId) {
 		// TODO �Զ����ɵķ������
-		ArrayList<CollectInfo> collections=new ArrayList<CollectInfo>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String game_name=null;
-		String game_type=null;
-		String game_platform=null;
-		String game_belong=null;
-		String game_img=null;
-		String sql="select game_name,game_type,game_platform,game_belong,game_img from collection where user_name=?";
+		List<CollectInfo> collections = new ArrayList<CollectInfo>();
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String game_name = null;
+		String game_type = null;
+		String game_platform = null;
+		String game_belong = null;
+		String game_img = null;
+		String sql = "select game_name,game_type,game_platform,game_belong,game_img from collection where user_id=?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, userName);
-			rs=pstmt.executeQuery();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				game_name=rs.getString("game_name");
-				game_type=rs.getString("game_type");
-				game_platform=rs.getString("game_platform");
-				game_belong=rs.getString("game_belong");
-				game_img=rs.getString("game_img");
-				CollectInfo c=new CollectInfo(game_name,game_type,game_img,game_platform,game_belong);
+				game_name = rs.getString("game_name");
+				game_type = rs.getString("game_type");
+				game_platform = rs.getString("game_platform");
+				game_belong = rs.getString("game_belong");
+				game_img = rs.getString("game_img");
+				CollectInfo c = new CollectInfo(game_name,game_type,game_img,game_platform,game_belong);
 				collections.add(c);
 			}
 		}catch(SQLException e) {

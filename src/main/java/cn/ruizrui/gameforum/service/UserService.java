@@ -6,12 +6,11 @@ import cn.ruizrui.gameforum.proxy.ProxyUser;
 import cn.ruizrui.gameforum.proxy.UserInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class UserService {
 
-    UserInterface proxy = new ProxyUser("用户");
+    private UserInterface proxy = new ProxyUser("用户");
 
     @Autowired
     private SQLConfig config;

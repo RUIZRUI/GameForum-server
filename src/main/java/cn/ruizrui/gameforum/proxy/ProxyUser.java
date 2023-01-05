@@ -1,6 +1,7 @@
 package cn.ruizrui.gameforum.proxy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
@@ -46,9 +47,9 @@ public class ProxyUser implements UserInterface {
 		return ru.addCollection(userName, gameName);
 	}
 	
-	public ArrayList<CollectInfo> getCollectionList(String userName){
+	public List<CollectInfo> getCollectionList(int userId){
 		if(!priority.equals("游客")) {
-			return ru.getCollectionList(userName);
+			return ru.getCollectionList(userId);
 		}else {
 			return null;
 		}
