@@ -6,14 +6,8 @@ import cn.ruizrui.gameforum.model.OnlineGame;
 import cn.ruizrui.gameforum.model.SingleGame;
 import cn.ruizrui.gameforum.proxy.ProxyUser;
 import cn.ruizrui.gameforum.proxy.UserInterface;
-import cn.ruizrui.gameforum.repository.AndroidDAO;
-import cn.ruizrui.gameforum.repository.IosDAO;
-import cn.ruizrui.gameforum.repository.OnlineDAO;
-import cn.ruizrui.gameforum.repository.SingleDAO;
-import cn.ruizrui.gameforum.repository.impl.AndroidDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.IosDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.OnlineDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.SingleDAOImpl;
+import cn.ruizrui.gameforum.repository.*;
+import cn.ruizrui.gameforum.repository.impl.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +24,8 @@ public class GameService {
     private IosDAO iosDAO = new IosDAOImpl();
 
     private OnlineDAO onlineDAO = new OnlineDAOImpl();
+
+    private GameIntroductionDAO gameIntroductionDAO = new GameIntroductionDAOImpl();
 
     /**
      * 获取所有单机游戏
@@ -121,5 +117,23 @@ public class GameService {
             onlineGameList = null;
         }
         return onlineGameList;
+    }
+
+    /**
+     * 获取单个单机游戏
+     * @param gameId
+     * @return
+     */
+    public SingleGame getSingleGame(String gameId){
+        return singleDAO.getGameById(gameId);
+    }
+
+    /**
+     * 获取游戏简介
+     * @param gameId
+     * @return
+     */
+    public String getGameIntroduction(String gameId){
+        return gameIntroductionDAO.getGameIntroduction(gameId);
     }
 }

@@ -14,7 +14,7 @@ public class SingleConcretWindow {
 public ArrayList<Comment> getComment(String gameName){
 	return comments=ci.getCommentByGameName(gameName);
 }
-public SingleGame getGame(String gameName) {
-	return si.getGameByName(gameName);
+public SingleGame getGame(String gameId) {
+	return si.getGameById(gameId);
 }
 }

@@ -24,8 +24,8 @@ public IosGame judgeIos(String gameName) {
 public OnlineGame judgeOnline(String gameName) {
 	return oi.getGameByName(gameName);
 }
-public SingleGame judgeSingle(String gameName) {
-	return si.getGameByName(gameName);
+public SingleGame judgeSingle(String gameId) {
+	return si.getGameById(gameId);
 }
 
 public String deleteGame(String gameName,int belong) {

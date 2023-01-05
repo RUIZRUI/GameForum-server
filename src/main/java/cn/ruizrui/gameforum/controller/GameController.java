@@ -76,4 +76,34 @@ public class GameController {
         message.put("result", onlineGameList);
         return message.toJSONString();
     }
+
+    /**
+     * 获取单个单机游戏
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/getSingleGame", method = RequestMethod.GET)
+    public String getSingleGame(@RequestParam String gameId){
+        SingleGame singleGame = gameService.getSingleGame(gameId);
+        String result = (singleGame != null) ? "success" : "单机游戏为空值";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("singleGame", singleGame);
+        return message.toJSONString();
+    }
+
+    /**
+     * 获取游戏简介
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/getGameIntroduction", method = RequestMethod.GET)
+    public String getGameIntroduction(@RequestParam String gameId){
+        String gameIntroduction = gameService.getGameIntroduction(gameId);
+        String result = (gameIntroduction != null) ? "success" : "游戏简介为空值";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("gameIntroduction", gameIntroduction);
+        return message.toJSONString();
+    }
 }
