@@ -1,12 +1,12 @@
 package cn.ruizrui.gameforum.repository;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import cn.ruizrui.gameforum.model.User;
+import cn.ruizrui.gameforum.model.RelationUser;
 
 public interface RelationshipDAO {
-	public ArrayList<User> getMyFans(String userName);
-	public ArrayList<User> getMyFollow(String userName);
+	public List<RelationUser> getMyFans(int userId);
+	public List<RelationUser> getMyFollow(int userId);
 	public boolean cancelFollow(String userName,String followedUserName);
 	public boolean followUser(String userName,String fanUserName);
 }

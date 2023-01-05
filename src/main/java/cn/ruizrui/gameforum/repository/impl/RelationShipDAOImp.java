@@ -3,82 +3,62 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ArrayList;
 
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.repository.RelationshipDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
-import cn.ruizrui.gameforum.model.User;
 
 public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 
 	@Override
-	//û�����ã����Ƿ�����user��
-	public ArrayList<User> getMyFans(String userName) {
-		// TODO �Զ����ɵķ������
-		ArrayList<User> fans=new ArrayList<User>();
-		ArrayList<String> fans_id=new ArrayList<String>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select a.fans_userid from user_relationship as a, user as b where a.main_userid=b.user_id and b.user_name =?";
-		String sql2="select user_name,img from user where user_id=?";
+	public List<RelationUser> getMyFans(int userId) {
+		List<RelationUser> fans = new ArrayList<RelationUser>();
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql="select u.user_id, u.user_name, u.img from user_relationship as ur, user as u where ur.main_userid = ? and ur.fans_userid = u.user_id";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userId);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				fans_id.add(rs.getString(1));
-			}
-			for(int i=0;i<fans_id.size();i++) {
-				pstmt=con.prepareStatement(sql2);
-				pstmt.setString(1, fans_id.get(i));
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					User ue=new User();
-					ue.setUser_name(rs.getString("user_name"));
-					ue.setImg(rs.getString("img"));
-					fans.add(ue);
-				}
+				RelationUser relationUser = new RelationUser();
+				relationUser.setUser_id(rs.getInt(1));
+				relationUser.setUser_name(rs.getString(2));
+				relationUser.setUser_avatar(rs.getString(3));
+				fans.add(relationUser);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
+		closeAll(con, pstmt, rs);
 		return fans;
 	}
 
 	@Override
-	public ArrayList<User> getMyFollow(String userName) {
-		// TODO �Զ����ɵķ������
-		ArrayList<User> follows=new ArrayList<User>();
-		ArrayList<Integer> follows_id=new ArrayList<Integer>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select a.main_userid from user_relationship as a, user as b where a.fans_userid=b.user_id and b.user_name =?";
-		String sql2="select user_name,img from user where user_id=?";
+	public List<RelationUser> getMyFollow(int userId) {
+		List<RelationUser> follows = new ArrayList<RelationUser>();
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql="select u.user_id, u.user_name, u.img from user_relationship as ur, user as u where ur.fans_userid = ? and ur.main_userid = u.user_id";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userId);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				follows_id.add(rs.getInt(1));
-			}
-			for(int i=0;i<follows_id.size();i++) {
-				pstmt=con.prepareStatement(sql2);
-				pstmt.setInt(1, follows_id.get(i));
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					User ue=new User();
-					ue.setUser_name(rs.getString("user_name"));
-					ue.setImg(rs.getString("img"));
-					follows.add(ue);
-				}
+				RelationUser relationUser = new RelationUser();
+				relationUser.setUser_id(rs.getInt(1));
+				relationUser.setUser_name(rs.getString(2));
+				relationUser.setUser_avatar(rs.getString(3));
+				follows.add(relationUser);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
+		closeAll(con, pstmt, rs);
 		return follows;
 	}
 

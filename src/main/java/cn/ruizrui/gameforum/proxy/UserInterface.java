@@ -5,6 +5,7 @@ import java.util.List;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.model.User;
 
 public interface UserInterface {
@@ -27,11 +28,11 @@ public interface UserInterface {
 	
 	public String cleanCollection(String userName);
 	
-	public ArrayList<cn.ruizrui.gameforum.model.User> getFollowUsers(String userName);
+	public List<RelationUser> getFollowUsers(int userId);
 	
 	public String  cancelFollow(String userName,String followedUserName);
 	
-	public ArrayList<cn.ruizrui.gameforum.model.User> getFanUsers(String userName);
+	public List<RelationUser> getFanUsers(int userId);
 	
 	public String followUser(String userName,String fanUserName);
 	

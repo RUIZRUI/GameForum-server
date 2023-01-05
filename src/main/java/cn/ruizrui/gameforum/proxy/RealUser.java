@@ -3,6 +3,7 @@ package cn.ruizrui.gameforum.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.repository.impl.CollectDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.CommentDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.LoginLogDAOImpl;
@@ -14,7 +15,8 @@ import cn.ruizrui.gameforum.model.User;
 import cn.ruizrui.gameforum.helper.JudgeGame;
 
 public class RealUser implements UserInterface {
-	ArrayList<User> fans=new ArrayList<User>();
+
+	List<User> fans = new ArrayList<User>();
 	RelationShipDAOImp ri=new RelationShipDAOImp();
 	CollectDAOImpl ci=new CollectDAOImpl();
 	CommentDAOImpl cmi=new CommentDAOImpl();
@@ -119,9 +121,9 @@ public class RealUser implements UserInterface {
 		return cmi.commentComment(userName, commentId, content);
 	}
 
-	public ArrayList<User> getFollowUsers(String userName){
-		return ri.getMyFollow(userName);
-		}
+	public List<RelationUser> getFollowUsers(int userId){
+		return ri.getMyFollow(userId);
+	}
 	
 	public  String cancelFollow(String userName,String fanUserName){
 		ri.cancelFollow(userName,fanUserName);
@@ -130,9 +132,8 @@ public class RealUser implements UserInterface {
 		return "success";
 	}
 
-	public ArrayList<User> getFanUsers(String userName){
-		this.fans=ri.getMyFans(userName);
-		return fans;
+	public List<RelationUser> getFanUsers(int userId){
+		return ri.getMyFans(userId);
 	}
 
 	public  String followUser(String userName,String fanUserName){

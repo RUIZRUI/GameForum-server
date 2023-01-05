@@ -5,6 +5,7 @@ import java.util.List;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 import cn.ruizrui.gameforum.model.Comment;
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.model.User;
 
 public class ProxyUser implements UserInterface {
@@ -71,9 +72,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public ArrayList<User> getFollowUsers(String userName){
+	public List<RelationUser> getFollowUsers(int userId){
 		if(!priority.equals("游客")) {
-			return ru.getFollowUsers(userName);
+			return ru.getFollowUsers(userId);
 		}else {
 			return null;
 		}
@@ -87,9 +88,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public ArrayList<User> getFanUsers(String userName){
+	public List<RelationUser> getFanUsers(int userId){
 		if(!priority.equals("游客")) {
-			return ru.getFanUsers(userName);
+			return ru.getFanUsers(userId);
 		}else {
 			return null;
 		}
