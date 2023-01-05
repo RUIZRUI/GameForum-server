@@ -68,4 +68,23 @@ public class UserController {
         message.put("avatarUrl", user.getImg());
         return message.toJSONString();
     }
+
+    /**
+     * 更改个人信息
+     * @param userId
+     * @param userName
+     * @param userEmail
+     * @param userPhone
+     * @param userSex
+     * @param userBirthday
+     * @return
+     */
+    @RequestMapping(value = "/accountSet", method = RequestMethod.POST)
+    public String accountSet(@RequestParam int userId, @RequestParam String userName, @RequestParam String userEmail,
+                             @RequestParam String userPhone, @RequestParam String userSex, @RequestParam String userBirthday){
+        String result = userService.updateUser(userId, userName, userEmail, userPhone, userSex, userBirthday);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

@@ -6,6 +6,7 @@ import cn.ruizrui.gameforum.proxy.ProxyUser;
 import cn.ruizrui.gameforum.proxy.UserInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class UserService {
@@ -41,5 +42,9 @@ public class UserService {
      */
     public User getUser(String userName){
         return proxy.getUserData(userName);
+    }
+
+    public String updateUser(int userId, String userName, String userEmail, String userPhone, String userSex, String userBirthday){
+        return proxy.setUserData(userId, userName, userEmail, userPhone, userSex, userBirthday);
     }
 }

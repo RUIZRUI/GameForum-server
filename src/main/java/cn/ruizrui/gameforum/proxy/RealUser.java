@@ -29,7 +29,7 @@ public class RealUser implements UserInterface {
 			if(ue.getStatus()==true) {
 				return "已登录";
 			}
-			ui.setStatusOn(userName);
+			// ui.setStatusOn(userName);
 			return "success";
 	}
 		else if(ue.getUser_name()==null){
