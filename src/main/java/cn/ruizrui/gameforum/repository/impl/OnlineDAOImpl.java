@@ -23,19 +23,19 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 		pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
-				OnlineGame o_game=new OnlineGame();
-				o_game.setGame_id(rs.getString("game_id"));
-				o_game.setGame_name(rs.getString("game_name"));
-				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-				o_game.setGame_type(rs.getString("game_type"));
-				o_game.setGame_score(rs.getFloat("game_score"));
-				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-				o_game.setGame_img(rs.getString("game_img"));
-				o_game.setGame_frame(rs.getString("game_frame"));
-				o_game.setGame_develop(rs.getString("game_develop"));
-				o_game.setGame_operator(rs.getString("game_operator"));
-				o_game.setGame_status(rs.getString("games_tatus"));
-				allGames.add(o_game);
+			OnlineGame o_game=new OnlineGame();
+			o_game.setGame_id(rs.getString("game_id"));
+			o_game.setGame_name(rs.getString("game_name"));
+			o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+			o_game.setGame_type(rs.getString("game_type"));
+			o_game.setGame_score(rs.getFloat("game_score"));
+			o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+			o_game.setGame_img(rs.getString("game_img"));
+			o_game.setGame_frame(rs.getString("game_frame"));
+			o_game.setGame_develop(rs.getString("game_develop"));
+			o_game.setGame_operator(rs.getString("game_operator"));
+			o_game.setGame_status(rs.getString("games_tatus"));
+			allGames.add(o_game);
 		}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -57,17 +57,17 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 		pstmt.setString(1,game_name);
 		rs=pstmt.executeQuery();
 		if(rs.next()) {
-				o_game.setGame_id(rs.getString("game_id"));
-				o_game.setGame_name(rs.getString("game_name"));
-				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-				o_game.setGame_type(rs.getString("game_type"));
-				o_game.setGame_score(rs.getFloat("game_score"));
-				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-				o_game.setGame_img(rs.getString("game_img"));
-				o_game.setGame_frame(rs.getString("game_frame"));
-				o_game.setGame_develop(rs.getString("game_develop"));
-				o_game.setGame_operator(rs.getString("game_operator"));
-				o_game.setGame_status(rs.getString("game_status"));
+			o_game.setGame_id(rs.getString("game_id"));
+			o_game.setGame_name(rs.getString("game_name"));
+			o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+			o_game.setGame_type(rs.getString("game_type"));
+			o_game.setGame_score(rs.getFloat("game_score"));
+			o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+			o_game.setGame_img(rs.getString("game_img"));
+			o_game.setGame_frame(rs.getString("game_frame"));
+			o_game.setGame_develop(rs.getString("game_develop"));
+			o_game.setGame_operator(rs.getString("game_operator"));
+			o_game.setGame_status(rs.getString("game_status"));
 		}else {
 			return null;
 		}
@@ -91,19 +91,19 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 		pstmt.setString(1,game_type);
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
-			    OnlineGame o_game=new OnlineGame();
-				o_game.setGame_id(rs.getString("game_id"));
-				o_game.setGame_name(rs.getString("game_name"));
-				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-				o_game.setGame_type(rs.getString("game_type"));
-				o_game.setGame_score(rs.getFloat("game_score"));
-				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-				o_game.setGame_img(rs.getString("game_img"));
-				o_game.setGame_frame(rs.getString("game_frame"));
-				o_game.setGame_develop(rs.getString("game_develop"));
-				o_game.setGame_operator(rs.getString("game_operator"));
-				o_game.setGame_status(rs.getString("games_tatus"));
-				typeGames.add(o_game);
+			OnlineGame o_game=new OnlineGame();
+			o_game.setGame_id(rs.getString("game_id"));
+			o_game.setGame_name(rs.getString("game_name"));
+			o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+			o_game.setGame_type(rs.getString("game_type"));
+			o_game.setGame_score(rs.getFloat("game_score"));
+			o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+			o_game.setGame_img(rs.getString("game_img"));
+			o_game.setGame_frame(rs.getString("game_frame"));
+			o_game.setGame_develop(rs.getString("game_develop"));
+			o_game.setGame_operator(rs.getString("game_operator"));
+			o_game.setGame_status(rs.getString("games_tatus"));
+			typeGames.add(o_game);
 		}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -127,18 +127,18 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
 		    OnlineGame o_game=new OnlineGame();
-				o_game.setGame_id(rs.getString("game_id"));
-				o_game.setGame_name(rs.getString("game_name"));
-				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-				o_game.setGame_type(rs.getString("game_type"));
-				o_game.setGame_score(rs.getFloat("game_score"));
-				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-				o_game.setGame_img(rs.getString("game_img"));
-				o_game.setGame_frame(rs.getString("game_frame"));
-				o_game.setGame_develop(rs.getString("game_develop"));
-				o_game.setGame_operator(rs.getString("game_operator"));
-				o_game.setGame_status(rs.getString("games_tatus"));
-				developGames.add(o_game);
+			o_game.setGame_id(rs.getString("game_id"));
+			o_game.setGame_name(rs.getString("game_name"));
+			o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+			o_game.setGame_type(rs.getString("game_type"));
+			o_game.setGame_score(rs.getFloat("game_score"));
+			o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+			o_game.setGame_img(rs.getString("game_img"));
+			o_game.setGame_frame(rs.getString("game_frame"));
+			o_game.setGame_develop(rs.getString("game_develop"));
+			o_game.setGame_operator(rs.getString("game_operator"));
+			o_game.setGame_status(rs.getString("games_tatus"));
+			developGames.add(o_game);
 		}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -176,31 +176,33 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 	}
 
 	@Override
-	public ArrayList<OnlineGame> getGameByTime() {
+	public ArrayList<OnlineGame> getGameByHopeNum() {
 		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> timegames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 
-		String sql="select * from online_game order by game_release_date";
+		String sql="select * from online_game order by game_hope_num";
 		try {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				OnlineGame o_game=new OnlineGame();
-							o_game.setGame_id(rs.getString("game_id"));
-							o_game.setGame_name(rs.getString("game_name"));
-							o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-							o_game.setGame_type(rs.getString("game_type"));
-							o_game.setGame_score(rs.getFloat("game_score"));
-							o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-							o_game.setGame_img(rs.getString("game_img"));
-							o_game.setGame_frame(rs.getString("game_frame"));
-							o_game.setGame_develop(rs.getString("game_develop"));
-							o_game.setGame_operator(rs.getString("game_operator"));
-							o_game.setGame_status(rs.getString("games_tatus"));
-							timegames.add(o_game);
+				o_game.setGame_id(rs.getString("game_id"));
+				o_game.setGame_name(rs.getString("game_name"));
+				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+				o_game.setGame_type(rs.getString("game_type"));
+				o_game.setGame_score(rs.getFloat("game_score"));
+				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+				o_game.setGame_img(rs.getString("game_img"));
+				o_game.setGame_frame(rs.getString("game_frame"));
+				o_game.setGame_develop(rs.getString("game_develop"));
+				o_game.setGame_operator(rs.getString("game_operator"));
+				o_game.setGame_status(rs.getString("game_status"));
+				o_game.setGame_website(rs.getString("game_website"));
+				o_game.setGame_label(rs.getString("game_label"));
+				timegames.add(o_game);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -223,18 +225,20 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				OnlineGame o_game=new OnlineGame();
-							o_game.setGame_id(rs.getString("game_id"));
-							o_game.setGame_name(rs.getString("game_name"));
-							o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-							o_game.setGame_type(rs.getString("game_type"));
-							o_game.setGame_score(rs.getFloat("game_score"));
-							o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-							o_game.setGame_img(rs.getString("game_img"));
-							o_game.setGame_frame(rs.getString("game_frame"));
-							o_game.setGame_develop(rs.getString("game_develop"));
-							o_game.setGame_operator(rs.getString("game_operator"));
-							o_game.setGame_status(rs.getString("games_tatus"));
-							raternumgames.add(o_game);
+				o_game.setGame_id(rs.getString("game_id"));
+				o_game.setGame_name(rs.getString("game_name"));
+				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+				o_game.setGame_type(rs.getString("game_type"));
+				o_game.setGame_score(rs.getFloat("game_score"));
+				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+				o_game.setGame_img(rs.getString("game_img"));
+				o_game.setGame_frame(rs.getString("game_frame"));
+				o_game.setGame_develop(rs.getString("game_develop"));
+				o_game.setGame_operator(rs.getString("game_operator"));
+				o_game.setGame_status(rs.getString("game_status"));
+				o_game.setGame_website(rs.getString("game_website"));
+				o_game.setGame_label(rs.getString("game_label"));
+				raternumgames.add(o_game);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -257,17 +261,19 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				OnlineGame o_game=new OnlineGame();
-							o_game.setGame_id(rs.getString("game_id"));
-							o_game.setGame_name(rs.getString("game_name"));
-							o_game.setGame_hope_num(rs.getInt("game_hope_num"));
-							o_game.setGame_type(rs.getString("game_type"));
-							o_game.setGame_score(rs.getFloat("game_score"));
-							o_game.setGame_rater_num(rs.getInt("game_rater_num"));
-							o_game.setGame_img(rs.getString("game_img"));
-							o_game.setGame_frame(rs.getString("game_frame"));
-							o_game.setGame_develop(rs.getString("game_develop"));
-							o_game.setGame_operator(rs.getString("game_operator"));
-							o_game.setGame_status(rs.getString("games_tatus"));
+				o_game.setGame_id(rs.getString("game_id"));
+				o_game.setGame_name(rs.getString("game_name"));
+				o_game.setGame_hope_num(rs.getInt("game_hope_num"));
+				o_game.setGame_type(rs.getString("game_type"));
+				o_game.setGame_score(rs.getFloat("game_score"));
+				o_game.setGame_rater_num(rs.getInt("game_rater_num"));
+				o_game.setGame_img(rs.getString("game_img"));
+				o_game.setGame_frame(rs.getString("game_frame"));
+				o_game.setGame_develop(rs.getString("game_develop"));
+				o_game.setGame_operator(rs.getString("game_operator"));
+				o_game.setGame_status(rs.getString("game_status"));
+				o_game.setGame_website(rs.getString("game_website"));
+				o_game.setGame_label(rs.getString("game_label"));
 				scoregames.add(o_game);
 			}
 		}catch(SQLException e){

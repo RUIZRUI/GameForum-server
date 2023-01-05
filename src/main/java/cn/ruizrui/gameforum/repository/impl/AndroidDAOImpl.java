@@ -203,10 +203,9 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 				a_game.setGame_img(rs.getString(12));
 				raternumgames.add(a_game);
 			}
-			for(int i=0;i<raternumgames.size();i++) {
+			/* for(int i=0;i<raternumgames.size();i++) {
 				System.out.println(raternumgames.get(i).getGame_rater_num());
-				
-			}
+			} */
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

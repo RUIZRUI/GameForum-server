@@ -8,7 +8,7 @@ public interface OnlineDAO {
 	ArrayList<OnlineGame> getGameByType(String game_type);
 	ArrayList<OnlineGame> getGameByDevelop(String game_develop);
 	void addGame(OnlineGame game);
-	ArrayList<OnlineGame> getGameByTime();
+	ArrayList<OnlineGame> getGameByHopeNum();
 	ArrayList<OnlineGame> getGameByRaterNum();
 	ArrayList<OnlineGame> getGameByScore();
 	boolean deleteGame(String gameName);

@@ -227,12 +227,12 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		SingleGame s_game=new SingleGame();
 		String sql="select * from single_game order by game_rater_num";
 		try {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
+				SingleGame s_game=new SingleGame();
 				s_game.setGame_id(rs.getString("game_id"));
 				s_game.setGame_name(rs.getString("game_name"));
 				s_game.setGame_label(rs.getString("game_label"));
@@ -262,12 +262,12 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		SingleGame s_game=new SingleGame();
 		String sql="select * from single_game order by game_score";
 		try {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
+				SingleGame s_game=new SingleGame();
 				s_game.setGame_id(rs.getString("game_id"));
 				s_game.setGame_name(rs.getString("game_name"));
 				s_game.setGame_label(rs.getString("game_label"));

@@ -8,7 +8,7 @@ public class OnlineMainWindow {
 	OnlineDAOImpl oi=new OnlineDAOImpl();
 	
 	public ArrayList<OnlineGame> getAndroidGameByTime(){
-		return oi.getGameByTime();
+		return oi.getGameByHopeNum();
 	}
 	public ArrayList<OnlineGame> getAndroidGameByPopularity(){
 		return oi.getGameByRaterNum();
