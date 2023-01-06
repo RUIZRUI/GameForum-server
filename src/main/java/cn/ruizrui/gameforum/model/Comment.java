@@ -1,77 +1,105 @@
 package cn.ruizrui.gameforum.model;
 
-import java.sql.Timestamp;
+import java.util.List;
 
 public class Comment {
-private String game_name;
-private String comment_name;
-private int comment_id;
-private int user_id;
-private String game_id;
-private int parent_id;
-private String content;
-private Timestamp timestamp;
-private int like;
-private int dislike;
-public int getComment_id() {
-	return comment_id;
-}
-public void setComment_id(int comment_id) {
-	this.comment_id = comment_id;
-}
-public int getUser_id() {
-	return user_id;
-}
-public void setUser_id(int user_id) {
-	this.user_id = user_id;
-}
-public String getGame_id() {
-	return game_id;
-}
-public void setGame_id(String game_id) {
-	this.game_id = game_id;
-}
-public int getParent_id() {
-	return parent_id;
-}
-public void setParent_id(int parent_id) {
-	this.parent_id = parent_id;
-}
-public String getContent() {
-	return content;
-}
-public void setContent(String content) {
-	this.content = content;
-}
-public Timestamp getTimestamp() {
-	return timestamp;
-}
-public void setTimestamp(Timestamp timestamp) {
-	this.timestamp = timestamp;
-}
-public int getLike() {
-	return like;
-}
-public void setLike(int like) {
-	this.like = like;
-}
-public int getDislike() {
-	return dislike;
-}
-public void setDislike(int dislike) {
-	this.dislike = dislike;
-}
-public String getComment_name() {
-	return comment_name;
-}
-public void setComment_name(String comment_name) {
-	this.comment_name = comment_name;
-}
-public String getGame_name() {
-	return game_name;
-}
-public void setGame_name(String game_name) {
-	this.game_name = game_name;
-}
 
+	private int comment_id;
+	private int user_id_from;
+	// 空值判断
+	private Integer parent_id;
+	private String content;
+	// 13位时间戳
+	private long comment_time;
+	private String img;
+	private String user_name;
+	private String priority;
+	private List<Comment> child;
+
+	public int getComment_id() {
+		return comment_id;
+	}
+
+	public void setComment_id(int comment_id) {
+		this.comment_id = comment_id;
+	}
+
+	public int getUser_id_from() {
+		return user_id_from;
+	}
+
+	public void setUser_id_from(int user_id_from) {
+		this.user_id_from = user_id_from;
+	}
+
+	public Integer getParent_id() {
+		return parent_id;
+	}
+
+	public void setParent_id(Integer parent_id) {
+		this.parent_id = parent_id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public long getComment_time() {
+		return comment_time;
+	}
+
+	public void setComment_time(long comment_time) {
+		this.comment_time = comment_time;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+	public List<Comment> getChild() {
+		return child;
+	}
+
+	public void setChild(List<Comment> child) {
+		this.child = child;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment{" +
+				"comment_id=" + comment_id +
+				", user_id_from=" + user_id_from +
+				", parent_id=" + parent_id +
+				", content='" + content + '\'' +
+				", comment_time=" + comment_time +
+				", img='" + img + '\'' +
+				", user_name='" + user_name + '\'' +
+				", priority='" + priority + '\'' +
+				", child=" + child +
+				'}';
+	}
 }

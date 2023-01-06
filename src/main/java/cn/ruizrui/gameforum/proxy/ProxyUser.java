@@ -3,10 +3,7 @@ package cn.ruizrui.gameforum.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.ruizrui.gameforum.model.CollectInfo;
-import cn.ruizrui.gameforum.model.Comment;
-import cn.ruizrui.gameforum.model.RelationUser;
-import cn.ruizrui.gameforum.model.User;
+import cn.ruizrui.gameforum.model.*;
 
 public class ProxyUser implements UserInterface {
 	String priority;
@@ -104,22 +101,22 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public ArrayList<Comment> getCommentToMe(String userName){
+	public List<MyComment> getCommentToMe(int userId){
 		if(!priority.equals("游客")) {
-			return ru.getCommentToMe(userName);
+			return ru.getCommentToMe(userId);
 		}else {
 			return null;
 		}
 	}
-	public boolean commentGame(String userName,String gameName,String content) {
-		return ru.commentGame(userName, gameName, content);
+	public boolean commentGame(int userIdFrom, String gameId, String content) {
+		return ru.commentGame(userIdFrom, gameId, content);
 	}
 	public boolean commentComment(String userName,int commentId,String content) {
 		return ru.commentComment(userName, commentId, content);
 	}
-	public ArrayList<Comment> getCommentFromMe(String userName){
+	public List<MyComment> getCommentFromMe(int userId){
 		if(!priority.equals("游客")) {
-			return ru.getCommentFromMe(userName);
+			return ru.getCommentFromMe(userId);
 		}else {
 			return null;
 		}

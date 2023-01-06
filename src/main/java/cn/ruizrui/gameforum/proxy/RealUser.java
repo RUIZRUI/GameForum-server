@@ -3,15 +3,12 @@ package cn.ruizrui.gameforum.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.ruizrui.gameforum.model.RelationUser;
+import cn.ruizrui.gameforum.model.*;
 import cn.ruizrui.gameforum.repository.impl.CollectDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.CommentDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.LoginLogDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.RelationShipDAOImp;
 import cn.ruizrui.gameforum.repository.impl.UserDAOImpl;
-import cn.ruizrui.gameforum.model.CollectInfo;
-import cn.ruizrui.gameforum.model.Comment;
-import cn.ruizrui.gameforum.model.User;
 import cn.ruizrui.gameforum.helper.JudgeGame;
 
 public class RealUser implements UserInterface {
@@ -114,8 +111,9 @@ public class RealUser implements UserInterface {
 		ci.clearCollection(userName);
 		return "success";
 	}
-	public boolean commentGame(String userName,String gameName,String content) {
-		return cmi.commentGame(userName, gameName, content);
+
+	public boolean commentGame(int userIdFrom, String gameId, String content) {
+		return cmi.commentGame(userIdFrom, gameId, content);
 	}
 	public boolean commentComment(String userName,int commentId,String content) {
 		return cmi.commentComment(userName, commentId, content);
@@ -144,12 +142,12 @@ public class RealUser implements UserInterface {
 	}
 	
 	
-	public ArrayList<Comment> getCommentToMe(String userName) {
-		return cmi.getCommentsToMe(userName);
+	public List<MyComment> getCommentToMe(int userId) {
+		return cmi.getCommentsToMe(userId);
 	}
 	
-	public ArrayList<Comment> getCommentFromMe(String userName) {
-		return cmi.getCommentsFromMe(userName);
+	public List<MyComment> getCommentFromMe(int userId) {
+		return cmi.getCommentsFromMe(userId);
 	}
 	
 	public String deleteCommentFromMe(int commentId,String userName) {

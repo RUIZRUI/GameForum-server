@@ -1,12 +1,8 @@
 package cn.ruizrui.gameforum.proxy;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import cn.ruizrui.gameforum.model.CollectInfo;
-import cn.ruizrui.gameforum.model.Comment;
-import cn.ruizrui.gameforum.model.RelationUser;
-import cn.ruizrui.gameforum.model.User;
+import cn.ruizrui.gameforum.model.*;
 
 public interface UserInterface {
 
@@ -36,13 +32,15 @@ public interface UserInterface {
 	
 	public String followUser(String userName,String fanUserName);
 	
-	public ArrayList<Comment> getCommentToMe(String userName);
+	public List<MyComment> getCommentToMe(int userId);
 	
-	public ArrayList<Comment> getCommentFromMe(String userName);
+	public List<MyComment> getCommentFromMe(int userId);
 	
 	public String deleteCommentFromMe(int commentId,String userName);
 	
 	public String cleanCommentFromMe(String userName);
+
+	public boolean commentGame(int userIdFrom, String gameId, String content);
 	
 	//版主
 	public String deleteGame(String gameName,int belong);

@@ -3,94 +3,74 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ArrayList;
+
+import cn.ruizrui.gameforum.model.MyComment;
 import cn.ruizrui.gameforum.repository.CommentDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
 import cn.ruizrui.gameforum.model.Comment;
-import cn.ruizrui.gameforum.helper.JudgeGame;
 
 public class CommentDAOImpl extends baseDAO implements CommentDAO{
 
 	@Override
-	public ArrayList<Comment> getCommentsToMe(String userName) {
-		// TODO �Զ����ɵķ������
-		ArrayList<Comment> Comments=new ArrayList<Comment>();
-		ArrayList<Integer> comment_id=new ArrayList<Integer>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select comment_id from comments where user_id=?";
-		String sql2="select * from  comments where parent_id=?";
+	public List<MyComment> getCommentsFromMe(int userId) {
+		List<MyComment> comments = null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select c.comment_id, if(c.user_id_to is null, null, u.user_name), bg.game_name, bg.game_belong, c.comment_time " +
+				"from comments as c, user as u, base_game as bg " +
+				"where c.user_id_from = ? and ((c.user_id_to is null and c.user_id_from = u.user_id) or c.user_id_to = u.user_id) and c.game_id = bg.game_id";
 		try{
-			pstmt=con.prepareStatement(sql);
-			UserDAOImpl ui=new UserDAOImpl();
-			int user_id=ui.getUserId(userName);
-			pstmt.setInt(1, user_id);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			rs = pst.executeQuery();
+			comments = new ArrayList<>();
 			while(rs.next()) {
-				comment_id.add(rs.getInt(1));
-			}
-			for(int i=0;i<comment_id.size();i++) {
-				pstmt=con.prepareStatement(sql2);
-				pstmt.setInt(1, comment_id.get(i));
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					Comment c=new Comment();
-					c.setComment_id(rs.getInt("comment_id"));
-					c.setComment_name(ui.getUserName(rs.getInt("user_id")));
-					c.setGame_name(rs.getString("game_name"));
-					c.setTimestamp(rs.getTimestamp("time"));
-					c.setContent(rs.getString("content"));
-					Comments.add(c);
-				}
+				MyComment comment = new MyComment();
+				comment.setComment_id(rs.getInt(1));
+				comment.setOther_name(rs.getString(2));
+				comment.setGame_name(rs.getString(3));
+				comment.setGame_belong(rs.getString(4));
+				comment.setComment_time(rs.getDate(5));
+				comments.add(comment);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return Comments;
+		}
+		closeAll(conn, pst, rs);
+		return comments;
 	}
 
 	@Override
-	public ArrayList<Comment> getCommentsFromMe(String userName) {
-		// TODO �Զ����ɵķ������
-		ArrayList<Comment> Comments=new ArrayList<Comment>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select * from comments where user_id=? and parent_id = -1";
-		String sql3="select a.comment_id,b.user_id,a.game_name,a.time,a.content from comments as a,"
-				+ "comments as b where b.comment_id=a.parent_id and a.user_id=?";
+	public List<MyComment> getCommentsToMe(int userId) {
+		List<MyComment> comments = null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql="select c.comment_id, u.user_name, bg.game_name, bg.game_belong, c.comment_time " +
+				"from comments as c, user as u, base_game as bg " +
+				"where c.user_id_to = ? and c.user_id_from = u.user_id and c.game_id = bg.game_id";
 		try{
-			pstmt=con.prepareStatement(sql);
-			UserDAOImpl ui=new UserDAOImpl();
-			int user_id=ui.getUserId(userName);
-			pstmt.setInt(1, user_id);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			rs = pst.executeQuery();
+			comments = new ArrayList<>();
 			while(rs.next()) {
-				Comment c=new Comment();
-				c.setComment_id(rs.getInt("comment_id"));
-				c.setComment_name(null);
-				c.setGame_name(rs.getString("game_name"));
-				c.setTimestamp(rs.getTimestamp("time"));
-				c.setContent(rs.getString("content"));
-				Comments.add(c);
+				MyComment comment = new MyComment();
+				comment.setComment_id(rs.getInt(1));
+				comment.setOther_name(rs.getString(2));
+				comment.setGame_name(rs.getString(3));
+				comment.setGame_belong(rs.getString(4));
+				comment.setComment_time(rs.getDate(5));
+				comments.add(comment);
 			}
-				pstmt=con.prepareStatement(sql3);
-				pstmt.setInt(1, user_id);
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					Comment c=new Comment();
-					c.setComment_id(rs.getInt(1));
-					c.setComment_name(ui.getUserName(rs.getInt(2)));
-					c.setGame_name(rs.getString(3));
-					c.setTimestamp(rs.getTimestamp(4));
-					c.setContent(rs.getString(5));
-					Comments.add(c);
-				}
 		}catch(SQLException e){
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return Comments;
+		}
+		closeAll(conn, pst, rs);
+		return comments;
 	}
 
 	@Override
@@ -134,70 +114,57 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO{
 	}
 
 	@Override
-	public ArrayList<Comment> getCommentByGameName(String gameName) {
-		// TODO �Զ����ɵķ������
-		ArrayList<Comment> comments=new ArrayList<Comment>();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select * from comments where game_name=?";
-		UserDAOImpl ui=new UserDAOImpl();
-		String user_name=null;
+	public List<Comment> getCommentsByGameId(String gameId) {
+		List<Comment> comments = null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select c.comment_id, c.user_id_from, c.parent_id, c.content, c.comment_time, u.img, u.user_name, u.priority " +
+				"from comments as c, user as u " +
+				"where c.game_id = ? and c.user_id_from = u.user_id;";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameId);
+			rs = pst.executeQuery();
+			comments = new ArrayList<>();
 			while(rs.next()) {
-				Comment c=new Comment();
-				c.setComment_id(rs.getInt("comment_id"));
-				c.setContent(rs.getString("content"));
-				c.setDislike(rs.getInt("dislike"));
-				c.setGame_id(rs.getString("game_id"));
-				c.setGame_name(rs.getString("game_name"));
-				c.setLike(rs.getInt("like"));
-				c.setParent_id(rs.getInt("like"));
-				c.setTimestamp(rs.getTimestamp("time"));
-				c.setUser_id(rs.getInt("user_id"));
+				Comment c = new Comment();
+				c.setComment_id(rs.getInt(1));
+				c.setUser_id_from(rs.getInt(2));
+				c.setParent_id(rs.getInt(3));
+				c.setContent(rs.getString(4));
+				c.setComment_time(rs.getTimestamp(5).getTime());
+				c.setImg(rs.getString(6));
+				c.setUser_name(rs.getString(7));
+				c.setPriority(rs.getString(8));
 				comments.add(c);
 			}
-			for(int i=0;i<comments.size();i++) {
-				user_name=ui.getUserName(comments.get(i).getUser_id());
-				comments.get(i).setComment_name(user_name);
-			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
+		closeAll(conn, pst, rs);
 		return comments;
 	}
 
 	@Override
-	public boolean commentGame(String userName, String gameName,String content) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="insert into comments(user_id,game_id,"
-				+ "parent_id,content,likes,dislike,game_name) values(?,?,?,?,?,?,?)";
-		UserDAOImpl ui=new UserDAOImpl();
-		JudgeGame jg=new JudgeGame();
-		String game_id=jg.getGameIdByName(gameName);
-		int user_id=ui.getUserId(userName);
+	public boolean commentGame(int userIdFrom, String gameId, String content) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "insert into comments(user_id_from, game_id, content) values (?, ?, ?)";
+		boolean result = false;
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, user_id);
-			pstmt.setString(2, game_id);
-			pstmt.setInt(3,-1);
-			pstmt.setString(4, content);
-			pstmt.setInt(5, 0);
-			pstmt.setInt(6, 0);
-			pstmt.setString(7,gameName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userIdFrom);
+			pst.setString(2, gameId);
+			pst.setString(3, content);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, rs);
+		return result;
 	}
 
 	@Override

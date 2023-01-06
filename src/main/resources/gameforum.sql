@@ -1,5 +1,5 @@
 -- 创建数据库
-create database if not exists design_pattern;
+create database if not exists game_forum;
 
 
 -- 创建单机游戏表
