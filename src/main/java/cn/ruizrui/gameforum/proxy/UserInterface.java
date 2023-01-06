@@ -18,7 +18,7 @@ public interface UserInterface {
 	
 	public List<CollectInfo> getCollectionList(int userId);
 
-	public boolean addCollection(String userName,String gameName);
+	public boolean addCollection(int userId, String gameId);
 	
 	public String cancelCollection(String userName,String gameName);
 	

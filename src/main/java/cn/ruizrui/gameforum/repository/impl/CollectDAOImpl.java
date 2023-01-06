@@ -10,19 +10,13 @@ import java.util.List;
 import cn.ruizrui.gameforum.repository.CollectDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
 import cn.ruizrui.gameforum.model.*;
-import cn.ruizrui.gameforum.factory.AbstractFactory;
-import cn.ruizrui.gameforum.factory.AndroidGameCreator;
-import cn.ruizrui.gameforum.factory.IosGameCreator;
-import cn.ruizrui.gameforum.factory.OnlineGameCreator;
-import cn.ruizrui.gameforum.factory.SingleGameCreator;
-import cn.ruizrui.gameforum.helper.JudgeGame;
+import cn.ruizrui.gameforum.helper.GameHelper;
 
 public class CollectDAOImpl extends baseDAO implements CollectDAO{
 
 	@Override
 	public List<CollectInfo> getCollectionByUserId(int userId) {
-		// TODO �Զ����ɵķ������
-		List<CollectInfo> collections = new ArrayList<CollectInfo>();
+		List<CollectInfo> collections = new ArrayList<>();
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -89,91 +83,63 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 		return true;
 	}
 
-	public boolean addCollection(String userName,String gameName) {
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		JudgeGame jg=new JudgeGame();
-		UserDAOImpl ui=new UserDAOImpl();
-		int user_id=ui.getUserId(userName);
-		AbstractFactory af;
-		int number=-1;
-		if(jg.judgeSingle(gameName)!=null) {
-			number=0;
-		}else if(jg.judgeAndroid(gameName)!=null) {
-			number=1;
-		}else if(jg.judgeIOS(gameName)!=null) {
-			number=2;
-		}else if(jg.judgeOnline(gameName)!=null) {
-			number=3;
-		}else {
-			return false;
-		}
-		String sql="insert into collection(user_id,user_name,game_id,game_name,game_type,game_platform,"
-				+ "game_belong,game_img) values(?,?,?,?,?,?,?,?)";
+	public boolean addCollection(int userId, String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		GameHelper gameHelper = new GameHelper();
+		boolean result = false;
+		String sql = "insert into collection(user_id, game_id, game_name, game_type, game_platform, game_belong, game_img) " +
+				" values(?, ?, ?, ?, ?, ?, ?)";
 		try {
-		switch(number) {
-		case 0:
-		af=new SingleGameCreator();
-		SingleGame sgame=jg.judgeSingle(gameName);
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, user_id);
-		pstmt.setString(2, userName);
-		pstmt.setString(3,sgame.getGame_id());
-		pstmt.setString(4, gameName);
-		pstmt.setString(5, sgame.getGame_type());
-		pstmt.setString(6, sgame.getGame_platform());
-		pstmt.setString(7, "网页游戏");
-		pstmt.setString(8, sgame.getGame_img());
-        pstmt.executeUpdate();
-		break;
-		case 1:af=new AndroidGameCreator();
-		MobileGame ag=af.createMoblieGame();
-		ag=jg.judgeAndroid(gameName);
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, user_id);
-		pstmt.setString(2, userName);
-		pstmt.setString(3,ag.getGame_id());
-		pstmt.setString(4, gameName);
-		pstmt.setString(5, ag.getGame_type());
-		pstmt.setString(6, ag.getGame_platform());
-		pstmt.setString(7, "安卓游戏");
-		pstmt.setString(8, ag.getGame_img());
-		pstmt.executeUpdate();
-		break;
-		case 2:af=new IosGameCreator();
-		MobileGame ig=af.createMoblieGame();
-		ig=jg.judgeIOS(gameName);
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, user_id);
-		pstmt.setString(2, userName);
-		pstmt.setString(3,ig.getGame_id());
-		pstmt.setString(4, gameName);
-		pstmt.setString(5, ig.getGame_type());
-		pstmt.setString(6, ig.getGame_platform());
-		pstmt.setString(7, "苹果游戏");
-		pstmt.setString(8, ig.getGame_img());
-		pstmt.executeUpdate();
-		break;
-		case 3:af=new OnlineGameCreator();
-		HostGame hg=af.createHostGame();
-		hg=jg.judgeOnline(gameName);
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, user_id);
-		pstmt.setString(2, userName);
-		pstmt.setString(3,hg.getGame_id());
-		pstmt.setString(4, gameName);
-		pstmt.setString(5, hg.getGame_type());
-		pstmt.setString(6, "网页");
-		pstmt.setString(7, "网页游戏");
-		pstmt.setString(8, hg.getGame_img());
-		pstmt.executeUpdate();
-		break;
-		default:return false;
-		}
-		}catch(SQLException e) {
+			String gameBelong = gameHelper.getGameBelongById(gameId);
+			CollectInfo collectInfo = new CollectInfo();
+			collectInfo.setGame_belong(gameBelong);
+			switch(gameBelong) {
+				case "单机游戏":
+					SingleGame singleGame = gameHelper.getSingleGameById(gameId);
+					collectInfo.setGame_name(singleGame.getGame_name());
+					collectInfo.setGame_type(singleGame.getGame_type());
+					collectInfo.setGame_platform(singleGame.getGame_platform());
+					collectInfo.setGame_img(singleGame.getGame_img());
+					break;
+				case "安卓游戏":
+					AndroidGame androidGame = gameHelper.getAndroidGameById(gameId);
+					collectInfo.setGame_name(androidGame.getGame_name());
+					collectInfo.setGame_type(androidGame.getGame_type());
+					collectInfo.setGame_platform(androidGame.getGame_platform());
+					collectInfo.setGame_img(androidGame.getGame_img());
+					break;
+				case "苹果游戏":
+					IOSGame iosGame = gameHelper.getIOSGameById(gameId);
+					collectInfo.setGame_name(iosGame.getGame_name());
+					collectInfo.setGame_type(iosGame.getGame_type());
+					collectInfo.setGame_platform(iosGame.getGame_platform());
+					collectInfo.setGame_img(iosGame.getGame_img());
+					break;
+				case "网页游戏":
+					OnlineGame onlineGame = gameHelper.getOnlineGameById(gameId);
+					collectInfo.setGame_name(onlineGame.getGame_name());
+					collectInfo.setGame_type(onlineGame.getGame_type());
+					collectInfo.setGame_platform("网页");
+					collectInfo.setGame_img(onlineGame.getGame_img());
+					break;
+				default:
+					return false;
+			}
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.setString(2, gameId);
+			pst.setString(3, collectInfo.getGame_name());
+			pst.setString(4, collectInfo.getGame_type());
+			pst.setString(5, collectInfo.getGame_platform());
+			pst.setString(6, collectInfo.getGame_belong());
+			pst.setString(7, collectInfo.getGame_img());
+			pst.executeUpdate();
+			result = true;
+		} catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return true;
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 }

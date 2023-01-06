@@ -20,4 +20,14 @@ public class CollectionService {
     public List<CollectInfo> getCollection(int userId){
         return proxy.getCollectionList(userId);
     }
+
+    /**
+     * 添加游戏收藏
+     * @param userId
+     * @param gameId
+     * @return
+     */
+    public boolean addCollection(int userId, String gameId){
+        return proxy.addCollection(userId, gameId);
+    }
 }

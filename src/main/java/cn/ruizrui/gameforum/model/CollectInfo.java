@@ -6,6 +6,11 @@ private String game_type;
 private String game_img;
 private String game_platform;
 private String game_belong;
+
+public CollectInfo(){
+
+}
+
 public CollectInfo(String game_name, String game_type, String game_img, String game_platform, String game_belong) {
 	super();
 	this.game_name = game_name;

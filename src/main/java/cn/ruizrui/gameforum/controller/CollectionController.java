@@ -30,4 +30,18 @@ public class CollectionController {
         message.put("result", collectInfoList);
         return message.toJSONString();
     }
+
+    /**
+     * 添加游戏收藏
+     * @param userId
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/addCollection", method = RequestMethod.POST)
+    public String addCollection(@RequestParam int userId, @RequestParam String gameId){
+        String result = collectionService.addCollection(userId, gameId) ? "success" : "游戏收藏失败";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

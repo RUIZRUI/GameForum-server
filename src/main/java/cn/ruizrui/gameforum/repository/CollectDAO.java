@@ -6,5 +6,5 @@ public interface CollectDAO {
 	public List<CollectInfo> getCollectionByUserId(int userId);
 	public boolean cancelCollection(String userName,String gameName);
 	public boolean clearCollection(String userName);
-	public boolean addCollection(String userName,String gameName);
+	public boolean addCollection(int userId, String gameId);
 }

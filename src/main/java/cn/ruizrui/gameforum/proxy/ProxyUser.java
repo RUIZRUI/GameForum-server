@@ -41,8 +41,8 @@ public class ProxyUser implements UserInterface {
 			return "请登录";
 		}
 	}
-	public boolean addCollection(String userName,String gameName) {
-		return ru.addCollection(userName, gameName);
+	public boolean addCollection(int userId, String gameId) {
+		return ru.addCollection(userId, gameId);
 	}
 	
 	public List<CollectInfo> getCollectionList(int userId){

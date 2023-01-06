@@ -9,7 +9,7 @@ import cn.ruizrui.gameforum.repository.impl.CommentDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.LoginLogDAOImpl;
 import cn.ruizrui.gameforum.repository.impl.RelationShipDAOImp;
 import cn.ruizrui.gameforum.repository.impl.UserDAOImpl;
-import cn.ruizrui.gameforum.helper.JudgeGame;
+import cn.ruizrui.gameforum.helper.GameHelper;
 
 public class RealUser implements UserInterface {
 
@@ -18,7 +18,7 @@ public class RealUser implements UserInterface {
 	CollectDAOImpl ci=new CollectDAOImpl();
 	CommentDAOImpl cmi=new CommentDAOImpl();
 	UserDAOImpl ui=new UserDAOImpl();
-	JudgeGame jg=new JudgeGame();
+	GameHelper jg=new GameHelper();
 	LoginLogDAOImpl li=new LoginLogDAOImpl();
 	
 	public String userLogin(String userName,String userPass) {
@@ -65,8 +65,8 @@ public class RealUser implements UserInterface {
 		User ue=ui.getByName(userName);
 		return ue;
     }
-	public boolean addCollection(String userName,String gameName) {
-		return ci.addCollection(userName, gameName);
+	public boolean addCollection(int userId, String gameId) {
+		return ci.addCollection(userId, gameId);
 	}
 	
 
