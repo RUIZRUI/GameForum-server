@@ -43,4 +43,18 @@ public class FollowController {
         message.put("fanList", relationUserList);
         return message.toJSONString();
     }
+
+    /**
+     * 关注用户
+     * @param idolUserId
+     * @param fanUserId
+     * @return
+     */
+    @RequestMapping(value = "/followUser", method = RequestMethod.POST)
+    public String followUser(@RequestParam int idolUserId, @RequestParam int fanUserId){
+        String result = followService.followUser(idolUserId, fanUserId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

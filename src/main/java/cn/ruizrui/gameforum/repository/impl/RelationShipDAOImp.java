@@ -63,51 +63,41 @@ public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 	}
 
 	@Override
-	public boolean cancelFollow(String userName, String followedUserName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		int user_id=0;
-		int followed_id = 0;
-		ResultSet rs=null;
-		String sql2="delete from user_relationship where main_userid=? and fans_userid=?";
+	public boolean cancelFollow(int idolUserId, int fanUserId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from user_relationship where main_userid = ? and fans_userid = ?";
 		try {
-			UserDAOImpl ui=new UserDAOImpl();
-			user_id=ui.getUserId(userName);
-			followed_id=ui.getUserId(followedUserName);
-			pstmt=con.prepareStatement(sql2);
-			pstmt.setInt(1, followed_id);
-			pstmt.setInt(2, user_id);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, idolUserId);
+			pst.setInt(2, fanUserId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean followUser(String userName, String fanUserName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		int user_id=0;
-		int followed_id = 0;
-		ResultSet rs=null;
-		String sql2="insert into user_relationship values(?,?)";
+	public boolean followUser(int idolUserId, int fanUserId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "insert into user_relationship values(?, ?)";
 		try {
-			UserDAOImpl ui=new UserDAOImpl();
-			user_id=ui.getUserId(userName);
-			followed_id=ui.getUserId(fanUserName);
-			pstmt=con.prepareStatement(sql2);
-			pstmt.setInt(1, followed_id);
-			pstmt.setInt(2, user_id);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, idolUserId);
+			pst.setInt(2, fanUserId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 }

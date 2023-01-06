@@ -123,10 +123,10 @@ public class RealUser implements UserInterface {
 		return ri.getMyFollow(userId);
 	}
 	
-	public  String cancelFollow(String userName,String fanUserName){
-		ri.cancelFollow(userName,fanUserName);
-		ui.reduceFollowNumber(userName);
-		ui.reduceFansNumber(fanUserName);
+	public  String cancelFollow(int idolUserId, int fanUserId){
+		ri.cancelFollow(idolUserId, fanUserId);
+		ui.reduceFollowNumber(fanUserId);
+		ui.reduceFansNumber(idolUserId);
 		return "success";
 	}
 
@@ -134,11 +134,15 @@ public class RealUser implements UserInterface {
 		return ri.getMyFans(userId);
 	}
 
-	public  String followUser(String userName,String fanUserName){
-		ri.followUser(userName,fanUserName);
-		ui.addFollowNumber(userName);
-		ui.addFansNumber(fanUserName);
-		return "success";
+	public  String followUser(int idolUserId, int fanUserId){
+		boolean result1 = ri.followUser(idolUserId, fanUserId);
+		boolean result2 = ui.addFollowNumber(fanUserId);
+		boolean result3 = ui.addFansNumber(idolUserId);
+		if (result1 && result2 && result3) {
+			return "success";
+		} else {
+			return "关注用户失败，followUser: " + result1 + ", addFollowNumber: " + result2 + ", addFansNumber: " + result3;
+		}
 	}
 	
 	

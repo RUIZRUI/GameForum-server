@@ -357,79 +357,79 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 
 	@Override
-	public boolean addFansNumber(String userName) {
-		// TODO ??????????????
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="update user set fans_number = fans_number +1 where user_name=?";
+	public boolean addFansNumber(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "update user set fans_number = fans_number + 1 where user_id=?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean reduceFansNumber(String userName) {
-		// TODO ??????????????
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="update user set fans_number = fans_number-1 where user_name=?";
+	public boolean reduceFansNumber(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "update user set fans_number = fans_number - 1 where user_id=?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean addFollowNumber(String userName) {
-		// TODO ??????????????
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="update user set follow_number = follow_number +1 where user_name=?";
+	public boolean addFollowNumber(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "update user set follow_number = follow_number + 1 where user_id=?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean reduceFollowNumber(String userName) {
-		// TODO ??????????????
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="update user set follow_number = follow_number -1 where user_name=?";
+	public boolean reduceFollowNumber(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "update user set follow_number = follow_number - 1 where user_id=?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 }

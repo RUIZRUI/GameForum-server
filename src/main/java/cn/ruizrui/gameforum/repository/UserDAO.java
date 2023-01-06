@@ -19,10 +19,10 @@ public interface UserDAO {
 	public boolean setUserAvater(String userName,String imgUrl);
 	public List<User> getTotalUsers();
 	public List<RelationUser> getAllUsers();
-	public boolean addFansNumber(String userName);
-	public boolean reduceFansNumber(String userName);
-	public boolean addFollowNumber(String userName);
-	public boolean reduceFollowNumber(String userName);
+	public boolean addFansNumber(int userId);
+	public boolean reduceFansNumber(int userId);
+	public boolean addFollowNumber(int userId);
+	public boolean reduceFollowNumber(int userId);
 	
 	
 }

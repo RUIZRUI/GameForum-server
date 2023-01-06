@@ -77,9 +77,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String  cancelFollow(String userName,String followedUserName) {
+	public String  cancelFollow(int idolUserId, int fanUserId) {
 		if(!priority.equals("游客")) {
-			return ru.cancelFollow(userName, followedUserName);
+			return ru.cancelFollow(idolUserId, fanUserId);
 		}else {
 			return "请登录";
 		}
@@ -93,9 +93,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String followUser(String userName,String fanUserName) {
+	public String followUser(int idolUserId,int fanUserId) {
 		if(!priority.equals("游客")) {
-			return ru.followUser(userName, fanUserName);
+			return ru.followUser(idolUserId, fanUserId);
 		}else {
 			return "请登录";
 		}

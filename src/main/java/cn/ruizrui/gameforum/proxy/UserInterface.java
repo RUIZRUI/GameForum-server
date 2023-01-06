@@ -26,11 +26,11 @@ public interface UserInterface {
 	
 	public List<RelationUser> getFollowUsers(int userId);
 	
-	public String  cancelFollow(String userName,String followedUserName);
+	public String  cancelFollow(int idolUserId, int fanUserId);
 	
 	public List<RelationUser> getFanUsers(int userId);
 	
-	public String followUser(String userName,String fanUserName);
+	public String followUser(int idolUserId, int fanUserId);
 	
 	public List<MyComment> getCommentToMe(int userId);
 	

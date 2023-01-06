@@ -30,4 +30,14 @@ public class FollowService {
     public List<RelationUser> getFans(int userId){
         return proxy.getFanUsers(userId);
     }
+
+    /**
+     * 关注用户
+     * @param idolUserId
+     * @param fanUserId
+     * @return
+     */
+    public String followUser(int idolUserId, int fanUserId){
+        return proxy.followUser(idolUserId, fanUserId);
+    }
 }
