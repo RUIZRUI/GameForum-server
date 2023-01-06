@@ -238,14 +238,16 @@ public class RealUser implements UserInterface {
 	}
 
 	@Override
-
-	public ArrayList<User> getTotalUser() {
-
+	public List<User> getTotalUser() {
 		return ui.getTotalUsers();
 	}
 
 	@Override
+	public List<RelationUser> getAllUsers(){
+		return ui.getAllUsers();
+	}
 
+	@Override
 	public String deleteUser(String userName) {
 		 ui.deleteUser(userName);
 		 return "success";

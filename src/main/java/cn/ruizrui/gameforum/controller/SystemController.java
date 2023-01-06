@@ -1,5 +1,6 @@
 package cn.ruizrui.gameforum.controller;
 
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.service.SystemService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/gameforum/v1/system")
@@ -46,6 +49,22 @@ public class SystemController {
             message.put("iosGameNum", iosGameNum);
             message.put("onlineGameNum", onlineGameNum);
         }
+        return message.toJSONString();
+    }
+
+    /**
+     * 获取用户列表
+     * @param userId
+     * @param userName
+     * @return
+     */
+    @RequestMapping(value = "/getUsersBySystem", method = RequestMethod.GET)
+    public String getUsersBySystem(@RequestParam int userId, @RequestParam String userName){
+        List<RelationUser> relationUserList = systemService.getUsersBySystem();
+        String result = (relationUserList != null) ? "success" : "用户列表为空";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("userList", relationUserList);
         return message.toJSONString();
     }
 }

@@ -67,7 +67,9 @@ public interface UserInterface {
 	
 	public int getSingleGameNum();
 	
-	public ArrayList<cn.ruizrui.gameforum.model.User> getTotalUser();
+	public List<User> getTotalUser();
+
+	public List<RelationUser> getAllUsers();
 	
 	public String deleteUser(String userName);
 	

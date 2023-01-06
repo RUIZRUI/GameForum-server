@@ -214,10 +214,18 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public ArrayList<User> getTotalUser(){
+	public List<User> getTotalUser(){
 		if(priority.equals("管理员")) {
 			return ru.getTotalUser();
 		}else {
+			return null;
+		}
+	}
+
+	public List<RelationUser> getAllUsers(){
+		if (priority.equals("管理员")) {
+			return ru.getAllUsers();
+		} else {
 			return null;
 		}
 	}

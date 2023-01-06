@@ -1,7 +1,8 @@
 package cn.ruizrui.gameforum.repository;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.model.User;
 
 public interface UserDAO {
@@ -16,7 +17,8 @@ public interface UserDAO {
 	public boolean deleteUser(String userName);
 	public boolean promoteUser(String userName);
 	public boolean setUserAvater(String userName,String imgUrl);
-	public ArrayList<User> getTotalUsers();
+	public List<User> getTotalUsers();
+	public List<RelationUser> getAllUsers();
 	public boolean addFansNumber(String userName);
 	public boolean reduceFansNumber(String userName);
 	public boolean addFollowNumber(String userName);

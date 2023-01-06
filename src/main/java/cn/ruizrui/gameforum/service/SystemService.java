@@ -1,5 +1,8 @@
 package cn.ruizrui.gameforum.service;
 
+import java.util.List;
+
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.proxy.ProxyUser;
 import cn.ruizrui.gameforum.proxy.UserInterface;
 import org.springframework.stereotype.Service;
@@ -71,6 +74,14 @@ public class SystemService {
      */
     public int getOnlineGameNum(){
         return proxy.getOnlineGameNum();
+    }
+
+    /**
+     * 获取用户列表
+     * @return
+     */
+    public List<RelationUser> getUsersBySystem(){
+        return proxy.getAllUsers();
     }
 
 }

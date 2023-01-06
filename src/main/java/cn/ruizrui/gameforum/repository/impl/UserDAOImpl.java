@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
+import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.repository.UserDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
 import cn.ruizrui.gameforum.model.User;
@@ -295,7 +297,7 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 
 	@Override
-	public ArrayList<User> getTotalUsers() {
+	public List<User> getTotalUsers() {
 		// TODO ??????????????
 		ArrayList<User> allUsers=new ArrayList<User>();
 		Connection con=getConnection();
@@ -328,6 +330,30 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 		closeAll(con,pstmt,rs);
 		return allUsers;
+	}
+
+	@Override
+	public List<RelationUser> getAllUsers(){
+		List<RelationUser> relationUserList = new ArrayList<>();
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select user_id, user_name, img from user";
+		try {
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				RelationUser relationUser = new RelationUser();
+				relationUser.setUser_id(rs.getInt("user_id"));
+				relationUser.setUser_name(rs.getString("user_name"));
+				relationUser.setUser_avatar(rs.getString("img"));
+				relationUserList.add(relationUser);
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		}
+		closeAll(conn, pst, rs);
+		return relationUserList;
 	}
 
 	@Override
