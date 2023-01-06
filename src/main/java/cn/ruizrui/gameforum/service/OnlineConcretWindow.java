@@ -15,7 +15,7 @@ public class OnlineConcretWindow {
 public ArrayList<Comment> getComment(String gameName){
 	return comments=ci.getCommentByGameName(gameName);
 }
-public OnlineGame getGame(String gameName) {
-	return ai.getGameByName(gameName);
+public OnlineGame getGame(String gameId) {
+	return ai.getGameById(gameId);
 }
 }

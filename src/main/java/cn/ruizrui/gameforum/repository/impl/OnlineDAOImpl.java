@@ -34,7 +34,7 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			o_game.setGame_frame(rs.getString("game_frame"));
 			o_game.setGame_develop(rs.getString("game_develop"));
 			o_game.setGame_operator(rs.getString("game_operator"));
-			o_game.setGame_status(rs.getString("games_tatus"));
+			o_game.setGame_status(rs.getString("game_status"));
 			allGames.add(o_game);
 		}
 	}catch(SQLException e) {
@@ -45,18 +45,18 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 	}
 
 	@Override
-	public OnlineGame getGameByName(String game_name) {
-		// TODO �Զ����ɵķ������
-		OnlineGame o_game=new OnlineGame();
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select * from online_game where game_name=?";
+	public OnlineGame getGameById(String gameId) {
+		OnlineGame o_game = null;
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from online_game where game_id=?";
 	try {
-		pstmt=con.prepareStatement(sql);
-		pstmt.setString(1,game_name);
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, gameId);
 		rs=pstmt.executeQuery();
 		if(rs.next()) {
+			o_game = new OnlineGame();
 			o_game.setGame_id(rs.getString("game_id"));
 			o_game.setGame_name(rs.getString("game_name"));
 			o_game.setGame_hope_num(rs.getInt("game_hope_num"));
@@ -68,6 +68,8 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			o_game.setGame_develop(rs.getString("game_develop"));
 			o_game.setGame_operator(rs.getString("game_operator"));
 			o_game.setGame_status(rs.getString("game_status"));
+			o_game.setGame_website(rs.getString("game_website"));
+			o_game.setGame_label(rs.getString("game_label"));
 		}else {
 			return null;
 		}
@@ -102,7 +104,7 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			o_game.setGame_frame(rs.getString("game_frame"));
 			o_game.setGame_develop(rs.getString("game_develop"));
 			o_game.setGame_operator(rs.getString("game_operator"));
-			o_game.setGame_status(rs.getString("games_tatus"));
+			o_game.setGame_status(rs.getString("game_status"));
 			typeGames.add(o_game);
 		}
 	}catch(SQLException e) {
@@ -137,7 +139,7 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 			o_game.setGame_frame(rs.getString("game_frame"));
 			o_game.setGame_develop(rs.getString("game_develop"));
 			o_game.setGame_operator(rs.getString("game_operator"));
-			o_game.setGame_status(rs.getString("games_tatus"));
+			o_game.setGame_status(rs.getString("game_status"));
 			developGames.add(o_game);
 		}
 	}catch(SQLException e) {

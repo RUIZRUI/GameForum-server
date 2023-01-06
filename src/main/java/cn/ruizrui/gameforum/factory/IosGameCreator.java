@@ -5,7 +5,7 @@ public class IosGameCreator extends MobileGameCreator{
 	@Override
 	public MobileGame createMobileGame() {
 		// TODO �Զ����ɵķ������
-		return new IosGame();
+		return new IOSGame();
 	}
 
 	@Override

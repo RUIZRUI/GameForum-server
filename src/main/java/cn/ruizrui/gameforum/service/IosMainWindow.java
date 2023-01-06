@@ -1,20 +1,20 @@
 package cn.ruizrui.gameforum.service;
 
 import java.util.ArrayList;
-import cn.ruizrui.gameforum.repository.impl.IosDAOImpl;
+import cn.ruizrui.gameforum.repository.impl.IOSDAOImpl;
 
-import cn.ruizrui.gameforum.model.IosGame;
+import cn.ruizrui.gameforum.model.IOSGame;
 
 public class IosMainWindow {
-	IosDAOImpl ii=new IosDAOImpl();
+	IOSDAOImpl ii=new IOSDAOImpl();
 	
-	public ArrayList<IosGame> getAndroidGameByTime(){
+	public ArrayList<IOSGame> getAndroidGameByTime(){
 		return ii.getGameByTime();
 	}
-	public ArrayList<IosGame> getAndroidGameByPopularity(){
+	public ArrayList<IOSGame> getAndroidGameByPopularity(){
 		return ii.getGameByRaterNum();
 	}
-	public ArrayList<IosGame> getAndroidGameByRate(){
+	public ArrayList<IOSGame> getAndroidGameByRate(){
 		return ii.getGameByScore();
 	}
 }

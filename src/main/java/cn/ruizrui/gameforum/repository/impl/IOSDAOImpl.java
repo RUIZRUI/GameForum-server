@@ -6,16 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import cn.ruizrui.gameforum.repository.IosDAO;
+import cn.ruizrui.gameforum.repository.IOSDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
-import cn.ruizrui.gameforum.model.IosGame;
+import cn.ruizrui.gameforum.model.IOSGame;
 
-public class IosDAOImpl extends baseDAO implements IosDAO{
+public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
-	public ArrayList<IosGame> getAllGames() {
+	public ArrayList<IOSGame> getAllGames() {
 		// TODO �Զ����ɵķ������
-		ArrayList<IosGame> allGames=new ArrayList<IosGame>();
+		ArrayList<IOSGame> allGames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -25,7 +25,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 		pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
-			IosGame i_game=new IosGame();
+			IOSGame i_game=new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));
@@ -48,18 +48,18 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public IosGame getGameByName(String game_name) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		IosGame i_game=new IosGame();
-		String sql="select * from ios_game where game_name=?";
+	public IOSGame getGameById(String gameId) {
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		IOSGame i_game = null;
+		String sql = "select * from ios_game where game_id=?";
 		try{
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,game_name);
-			rs=pstmt.executeQuery();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, gameId);
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				i_game = new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));
@@ -84,9 +84,9 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public ArrayList<IosGame> getGameByType(String game_type) {
+	public ArrayList<IOSGame> getGameByType(String game_type) {
 		// TODO �Զ����ɵķ������
-		ArrayList<IosGame> typeGames=new ArrayList<IosGame>();
+		ArrayList<IOSGame> typeGames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -97,7 +97,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 		pstmt.setString(1,game_type);
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
-			IosGame i_game=new IosGame();
+			IOSGame i_game=new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));
@@ -120,7 +120,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public void addGame(IosGame game) {
+	public void addGame(IOSGame game) {
 		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -148,9 +148,9 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public ArrayList<IosGame> getGameByTime() {
+	public ArrayList<IOSGame> getGameByTime() {
 		// TODO �Զ����ɵķ������
-		ArrayList<IosGame> timegames=new ArrayList<IosGame>();
+		ArrayList<IOSGame> timegames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -159,7 +159,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				IosGame i_game=new IosGame();
+				IOSGame i_game=new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));
@@ -182,9 +182,9 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public ArrayList<IosGame> getGameByRaterNum() {
+	public ArrayList<IOSGame> getGameByRaterNum() {
 		// TODO �Զ����ɵķ������
-		ArrayList<IosGame> raternumgames=new ArrayList<IosGame>();
+		ArrayList<IOSGame> raternumgames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -193,7 +193,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				IosGame i_game=new IosGame();
+				IOSGame i_game=new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));
@@ -216,9 +216,9 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 	}
 
 	@Override
-	public ArrayList<IosGame> getGameByScore() {
+	public ArrayList<IOSGame> getGameByScore() {
 		// TODO �Զ����ɵķ������
-		ArrayList<IosGame> scoregames=new ArrayList<IosGame>();
+		ArrayList<IOSGame> scoregames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -227,7 +227,7 @@ public class IosDAOImpl extends baseDAO implements IosDAO{
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				IosGame i_game=new IosGame();
+				IOSGame i_game=new IOSGame();
 				i_game.setGame_id(rs.getString(1));
 				i_game.setGame_name(rs.getString(2));
 				i_game.setGame_slogan(rs.getString(3));

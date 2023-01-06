@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import cn.ruizrui.gameforum.model.*;
 public interface AndroidDAO {
 	ArrayList<AndroidGame>  getAllGames();
-	AndroidGame getGameByName(String game_name);
+	AndroidGame getGameById(String gameId);
 	ArrayList<AndroidGame> getGameByType(String game_type);
 	void addGame(AndroidGame game);
 	ArrayList<AndroidGame> getGameByTime();

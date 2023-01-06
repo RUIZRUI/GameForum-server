@@ -16,7 +16,7 @@ public class AndroidConcretWindow {
 		return comments=ci.getCommentByGameName(gameName);
 	}
 	
-	public AndroidGame getGame(String gameName) {
-		return ai.getGameByName(gameName);
+	public AndroidGame getGame(String gameId) {
+		return ai.getGameById(gameId);
 	}
 }

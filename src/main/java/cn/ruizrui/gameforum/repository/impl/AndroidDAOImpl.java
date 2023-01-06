@@ -46,19 +46,18 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 	}
 
 	@Override
-	public AndroidGame getGameByName(String game_name) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select * from android_Game where game_name=?";
-		AndroidGame a_game=new AndroidGame();
+	public AndroidGame getGameById(String gameId) {
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from android_Game where game_id=?";
+		AndroidGame a_game = null;
 		try{
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,game_name);
-			rs=pstmt.executeQuery();
-
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, gameId);
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				a_game = new AndroidGame();
 				a_game.setGame_id(rs.getString(1));
 				a_game.setGame_name(rs.getString(2));
 				a_game.setGame_slogan(rs.getString(3));

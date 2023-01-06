@@ -1,7 +1,7 @@
 package cn.ruizrui.gameforum.service;
 
 import cn.ruizrui.gameforum.model.AndroidGame;
-import cn.ruizrui.gameforum.model.IosGame;
+import cn.ruizrui.gameforum.model.IOSGame;
 import cn.ruizrui.gameforum.model.OnlineGame;
 import cn.ruizrui.gameforum.model.SingleGame;
 import cn.ruizrui.gameforum.proxy.ProxyUser;
@@ -21,7 +21,7 @@ public class GameService {
 
     private AndroidDAO androidDAO = new AndroidDAOImpl();
 
-    private IosDAO iosDAO = new IosDAOImpl();
+    private IOSDAO iosDAO = new IOSDAOImpl();
 
     private OnlineDAO onlineDAO = new OnlineDAOImpl();
 
@@ -79,8 +79,8 @@ public class GameService {
      * @param desc
      * @return
      */
-    public List<IosGame> getAllIOSGame(int sortType, boolean desc){
-        List<IosGame> iosGameList;
+    public List<IOSGame> getAllIOSGame(int sortType, boolean desc){
+        List<IOSGame> iosGameList;
         if (sortType == 1){
             // 时间排序
             iosGameList = iosDAO.getGameByTime();
@@ -135,5 +135,32 @@ public class GameService {
      */
     public String getGameIntroduction(String gameId){
         return gameIntroductionDAO.getGameIntroduction(gameId);
+    }
+
+    /**
+     * 获取单个苹果游戏
+     * @param gameId
+     * @return
+     */
+    public IOSGame getIOSGame(String gameId){
+        return iosDAO.getGameById(gameId);
+    }
+
+    /**
+     * 获取单个安卓游戏
+     * @param gameId
+     * @return
+     */
+    public AndroidGame getAndroidGame(String gameId){
+        return androidDAO.getGameById(gameId);
+    }
+
+    /**
+     * 获取单个网页游戏
+     * @param gameId
+     * @return
+     */
+    public OnlineGame getOnlineGame(String gameId){
+        return onlineDAO.getGameById(gameId);
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface OnlineDAO {
 	public ArrayList<OnlineGame> getAllGame();
-	OnlineGame getGameByName(String game_name);
+	OnlineGame getGameById(String gameId);
 	ArrayList<OnlineGame> getGameByType(String game_type);
 	ArrayList<OnlineGame> getGameByDevelop(String game_develop);
 	void addGame(OnlineGame game);

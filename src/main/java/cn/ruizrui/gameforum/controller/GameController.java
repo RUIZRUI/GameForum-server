@@ -1,7 +1,7 @@
 package cn.ruizrui.gameforum.controller;
 
 import cn.ruizrui.gameforum.model.AndroidGame;
-import cn.ruizrui.gameforum.model.IosGame;
+import cn.ruizrui.gameforum.model.IOSGame;
 import cn.ruizrui.gameforum.model.OnlineGame;
 import cn.ruizrui.gameforum.model.SingleGame;
 import cn.ruizrui.gameforum.service.GameService;
@@ -57,7 +57,7 @@ public class GameController {
      */
     @RequestMapping(value = "/getAllIOSGame", method = RequestMethod.GET)
     public String getAllIOSGame(@RequestParam int sortType, @RequestParam boolean desc){
-        List<IosGame> iosGameList = gameService.getAllIOSGame(sortType, desc);
+        List<IOSGame> iosGameList = gameService.getAllIOSGame(sortType, desc);
         JSONObject message = new JSONObject();
         message.put("result", iosGameList);
         return message.toJSONString();
@@ -104,6 +104,51 @@ public class GameController {
         JSONObject message = new JSONObject();
         message.put("result", result);
         message.put("gameIntroduction", gameIntroduction);
+        return message.toJSONString();
+    }
+
+    /**
+     * 获取单个苹果游戏
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/getIOSGame", method = RequestMethod.GET)
+    public String getIOSGame(@RequestParam String gameId){
+        IOSGame iosGame = gameService.getIOSGame(gameId);
+        String result = (iosGame != null) ? "success" : "苹果游戏为空值";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("iosGame", iosGame);
+        return message.toJSONString();
+    }
+
+    /**
+     * 获取单个安卓游戏
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/getAndroidGame", method = RequestMethod.GET)
+    public String getAndroidGame(@RequestParam String gameId){
+        AndroidGame androidGame = gameService.getAndroidGame(gameId);
+        String result = (androidGame != null) ? "success" : "安卓游戏为空值";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("androidGame", androidGame);
+        return message.toJSONString();
+    }
+
+    /**
+     * 获取单个网页游戏
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/getOnlineGame", method = RequestMethod.GET)
+    public String getOnlineGame(@RequestParam String gameId){
+        OnlineGame onlineGame = gameService.getOnlineGame(gameId);
+        String result = (onlineGame != null) ? "success" : "网页游戏为空值";
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        message.put("onlineGame", onlineGame);
         return message.toJSONString();
     }
 }

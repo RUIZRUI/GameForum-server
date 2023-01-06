@@ -102,7 +102,7 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 			number=0;
 		}else if(jg.judgeAndroid(gameName)!=null) {
 			number=1;
-		}else if(jg.judgeIos(gameName)!=null) {
+		}else if(jg.judgeIOS(gameName)!=null) {
 			number=2;
 		}else if(jg.judgeOnline(gameName)!=null) {
 			number=3;
@@ -143,7 +143,7 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 		break;
 		case 2:af=new IosGameCreator();
 		MobileGame ig=af.createMoblieGame();
-		ig=jg.judgeIos(gameName);
+		ig=jg.judgeIOS(gameName);
 		pstmt=con.prepareStatement(sql);
 		pstmt.setInt(1, user_id);
 		pstmt.setString(2, userName);
