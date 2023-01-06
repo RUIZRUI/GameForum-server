@@ -61,7 +61,7 @@ public interface UserInterface {
 	
 	public int getAndroidGameNum();
 	
-	public int getIosGameNum();
+	public int getIOSGameNum();
 	
 	public int getOnlineGameNum();
 	

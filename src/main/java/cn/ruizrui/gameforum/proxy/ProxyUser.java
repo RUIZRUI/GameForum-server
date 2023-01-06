@@ -149,9 +149,7 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	//δʵ��ɾ����������
-	
-	//ϵͳ����Ա
+	// 管理员权限
 	public int getRegisterPeopleNum() {
 		if(priority.equals("管理员")) {
 			return ru.getRegisterPeopleNum();
@@ -192,9 +190,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public int getIosGameNum() {
+	public int getIOSGameNum() {
 		if(priority.equals("管理员")) {
-			return ru.getIosGameNum();
+			return ru.getIOSGameNum();
 		}else {
 			return -1;
 		}

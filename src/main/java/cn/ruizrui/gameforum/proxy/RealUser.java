@@ -218,7 +218,7 @@ public class RealUser implements UserInterface {
 
 	@Override
 
-	public int getIosGameNum() {
+	public int getIOSGameNum() {
 
 		return jg.getGameNum(2);
 	}
