@@ -20,13 +20,13 @@ public interface UserInterface {
 
 	public boolean addCollection(int userId, String gameId);
 	
-	public String cancelCollection(String userName,String gameName);
+	public String cancelCollection(int userId, String gameId);
 	
-	public String cleanCollection(String userName);
+	public String cleanCollection(int userId);
 	
 	public List<RelationUser> getFollowUsers(int userId);
 	
-	public String  cancelFollow(int idolUserId, int fanUserId);
+	public String cancelFollow(int idolUserId, int fanUserId);
 	
 	public List<RelationUser> getFanUsers(int userId);
 	
@@ -36,9 +36,9 @@ public interface UserInterface {
 	
 	public List<MyComment> getCommentFromMe(int userId);
 	
-	public String deleteCommentFromMe(int commentId,String userName);
+	public String deleteCommentFromMe(int commentId);
 	
-	public String cleanCommentFromMe(String userName);
+	public String cleanCommentFromMe(int userId);
 
 	public boolean commentGame(int userIdFrom, String gameId, String content);
 	
@@ -69,7 +69,7 @@ public interface UserInterface {
 
 	public List<RelationUser> getAllUsers();
 	
-	public String deleteUser(String userName);
+	public String deleteUser(int userId);
 	
 	public String addObserver(String userName);
 	

@@ -9,4 +9,5 @@ public interface RelationshipDAO {
 	public List<RelationUser> getMyFollow(int userId);
 	public boolean cancelFollow(int idolUserId, int fanUserId);
 	public boolean followUser(int idolUserId, int fanUserId);
+	public boolean isExistFollow(int idolUserId, int fanUserId);
 }

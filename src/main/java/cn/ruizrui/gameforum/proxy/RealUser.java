@@ -102,14 +102,12 @@ public class RealUser implements UserInterface {
 	}
 	
 	
-	public String cancelCollection(String userName,String gameName){
-		ci.cancelCollection(userName,gameName);
-		return "success";
-		}
+	public String cancelCollection(int userId, String gameId){
+		return ci.cancelCollection(userId, gameId) ? "success" : "取消收藏游戏失败";
+	}
 	
-	public String cleanCollection(String userName){
-		ci.clearCollection(userName);
-		return "success";
+	public String cleanCollection(int userId){
+		return ci.clearCollection(userId) ? "success" : "清空收藏游戏失败";
 	}
 
 	public boolean commentGame(int userIdFrom, String gameId, String content) {
@@ -124,10 +122,18 @@ public class RealUser implements UserInterface {
 	}
 	
 	public  String cancelFollow(int idolUserId, int fanUserId){
-		ri.cancelFollow(idolUserId, fanUserId);
-		ui.reduceFollowNumber(fanUserId);
-		ui.reduceFansNumber(idolUserId);
-		return "success";
+		boolean result1 = ri.cancelFollow(idolUserId, fanUserId);
+		if (result1 == false) {
+			return "取消关注用户失败，cancelFollow: " + result1;
+		}
+		boolean result2 = ui.reduceFollowNumber(fanUserId);
+		boolean result3 = ui.reduceFansNumber(idolUserId);
+		if (result1 && result2 && result3) {
+			return "success";
+		} else {
+			return "取消关注用户失败，cancelFollow: " + result1 + ", reduceFollowNumber: " + result2 + ", reduceFansNumber: " + result3;
+		}
+
 	}
 
 	public List<RelationUser> getFanUsers(int userId){
@@ -135,7 +141,13 @@ public class RealUser implements UserInterface {
 	}
 
 	public  String followUser(int idolUserId, int fanUserId){
+		if (ri.isExistFollow(idolUserId, fanUserId)) {
+			return "您已关注此用户";
+		}
 		boolean result1 = ri.followUser(idolUserId, fanUserId);
+		if (result1 == false) {
+			return "关注用户失败，followUser: " + result1;
+		}
 		boolean result2 = ui.addFollowNumber(fanUserId);
 		boolean result3 = ui.addFansNumber(idolUserId);
 		if (result1 && result2 && result3) {
@@ -154,17 +166,16 @@ public class RealUser implements UserInterface {
 		return cmi.getCommentsFromMe(userId);
 	}
 	
-	public String deleteCommentFromMe(int commentId,String userName) {
-		if(cmi.deleteComment(commentId, userName)) {
-		return "success";
+	public String deleteCommentFromMe(int commentId) {
+		if(cmi.deleteComment(commentId)) {
+			return "success";
 		}else {
-			return "false";
+			return "删除评论失败";
 		}
 	}
 	
-	public String cleanCommentFromMe(String userName) {
-		cmi.clearComment(userName);
-		return "success";
+	public String cleanCommentFromMe(int userId) {
+		return cmi.clearComment(userId) ? "success" : "清空评论失败";
 	}
 
 	public String setUserAvater(String userName, String imgUrl) {
@@ -250,9 +261,8 @@ public class RealUser implements UserInterface {
 	}
 
 	@Override
-	public String deleteUser(String userName) {
-		 ui.deleteUser(userName);
-		 return "success";
+	public String deleteUser(int userId) {
+		 return ui.deleteUser(userId) ? "success" : "删除用户失败";
 	}
 	@Override
 	public String addObserver(String userName) {

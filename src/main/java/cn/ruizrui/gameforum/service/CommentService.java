@@ -54,4 +54,23 @@ public class CommentService {
     public List<MyComment> getCommentFromMe(int userId){
         return proxy.getCommentFromMe(userId);
     }
+
+    /**
+     * 删除评论
+     * @param commentId
+     * @param userId
+     * @return
+     */
+    public String deleteComment(int commentId, int userId){
+        return proxy.deleteCommentFromMe(commentId);
+    }
+
+    /**
+     * 清空用户评论
+     * @param userId
+     * @return
+     */
+    public String clearCommentByUser(int userId){
+        return proxy.cleanCommentFromMe(userId);
+    }
 }

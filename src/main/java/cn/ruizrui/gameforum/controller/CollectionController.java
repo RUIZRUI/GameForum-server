@@ -39,7 +39,34 @@ public class CollectionController {
      */
     @RequestMapping(value = "/addCollection", method = RequestMethod.POST)
     public String addCollection(@RequestParam int userId, @RequestParam String gameId){
-        String result = collectionService.addCollection(userId, gameId) ? "success" : "游戏收藏失败";
+        String result = collectionService.addCollection(userId, gameId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
+
+    /**
+     * 取消收藏游戏
+     * @param userId
+     * @param gameId
+     * @return
+     */
+    @RequestMapping(value = "/cancelCollection", method = RequestMethod.POST)
+    public String cancelCollection(@RequestParam int userId, @RequestParam String gameId){
+        String result = collectionService.cancelCollection(userId, gameId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
+
+    /**
+     * 清空收藏游戏
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "/clearCollection", method = RequestMethod.POST)
+    public String clearCollection(@RequestParam int userId){
+        String result = collectionService.clearCollection(userId);
         JSONObject message = new JSONObject();
         message.put("result", result);
         return message.toJSONString();

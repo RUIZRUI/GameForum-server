@@ -12,6 +12,8 @@ public class UserService {
 
     private UserInterface proxy = new ProxyUser("用户");
 
+    private UserInterface admin = new ProxyUser("管理员");
+
     @Autowired
     private SQLConfig config;
 
@@ -43,7 +45,28 @@ public class UserService {
         return proxy.getUserData(userName);
     }
 
+    /**
+     * 更改个人信息
+     * @param userId
+     * @param userName
+     * @param userEmail
+     * @param userPhone
+     * @param userSex
+     * @param userBirthday
+     * @return
+     */
     public String updateUser(int userId, String userName, String userEmail, String userPhone, String userSex, String userBirthday){
         return proxy.setUserData(userId, userName, userEmail, userPhone, userSex, userBirthday);
+    }
+
+    /**
+     * 管理员删除用户
+     * @param userId
+     * @param userName
+     * @param deletedUserId
+     * @return
+     */
+    public String userDelete(int userId, String userName, int deletedUserId){
+        return admin.deleteUser(deletedUserId);
     }
 }

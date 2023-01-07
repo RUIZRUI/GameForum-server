@@ -239,22 +239,22 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 	}
 
 	@Override
-	public boolean deleteUser(String userName) {
-		// TODO ??????????????
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from user where user_name=?";
+	public boolean deleteUser(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from user where user_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn , pst, null);
+		return result;
 	}
 
 	@Override

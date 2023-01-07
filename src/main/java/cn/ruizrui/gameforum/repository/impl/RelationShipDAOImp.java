@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.repository.RelationshipDAO;
+import cn.ruizrui.gameforum.repository.SingleDAO;
 import cn.ruizrui.gameforum.repository.baseDAO;
 
 public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
@@ -100,4 +101,25 @@ public class RelationShipDAOImp extends baseDAO implements RelationshipDAO {
 		return result;
 	}
 
+	@Override
+	public boolean isExistFollow(int idolUserId, int fanUserId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		boolean result = false;
+		String sql = "select * from user_relationship where main_userid = ? and fans_userid = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, idolUserId);
+			pst.setInt(2, fanUserId);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		closeAll(conn, pst, rs);
+		return result;
+	}
 }

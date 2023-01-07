@@ -53,17 +53,17 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String cancelCollection(String userName,String gameName) {
+	public String cancelCollection(int userId, String gameId) {
 		if(!priority.equals("游客")) {
-			return ru.cancelCollection(userName, gameName);
+			return ru.cancelCollection(userId, gameId);
 		}else {
 			return "请登录";
 		}
 	}
 	
-	public String cleanCollection(String userName) {
+	public String cleanCollection(int userId) {
 		if(!priority.equals("游客")) {
-			return ru.cleanCollection(userName);
+			return ru.cleanCollection(userId);
 		}else {
 			return "请登录";
 		}
@@ -77,7 +77,7 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String  cancelFollow(int idolUserId, int fanUserId) {
+	public String cancelFollow(int idolUserId, int fanUserId) {
 		if(!priority.equals("游客")) {
 			return ru.cancelFollow(idolUserId, fanUserId);
 		}else {
@@ -122,17 +122,17 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String deleteCommentFromMe(int commentId,String userName) {
+	public String deleteCommentFromMe(int commentId) {
 		if(!priority.equals("游客")) {
-			return ru.deleteCommentFromMe(commentId, userName);
+			return ru.deleteCommentFromMe(commentId);
 		}else {
 			return "请登录";
 		}
 	};
 	
-	public String cleanCommentFromMe(String userName) {
+	public String cleanCommentFromMe(int userId) {
 		if(!priority.equals("游客")) {
-			return ru.cleanCommentFromMe(userName);
+			return ru.cleanCommentFromMe(userId);
 		}else {
 			return "请登录";
 		}
@@ -227,9 +227,9 @@ public class ProxyUser implements UserInterface {
 		}
 	}
 	
-	public String deleteUser(String userName) {
+	public String deleteUser(int userId) {
 		if(priority.equals("管理员")) {
-			return ru.deleteUser(userName);
+			return ru.deleteUser(userId);
 		}else {
 			return "权限不够";
 		}

@@ -74,43 +74,39 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO{
 	}
 
 	@Override
-	public boolean deleteComment(int commentId,String userName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		UserDAOImpl ui=new UserDAOImpl();
-		int user_id=ui.getUserId(userName);
-		String sql="delete from comments where comment_id=? and user_id=?";
+	public boolean deleteComment(int commentId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from comments where comment_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, commentId);
-			pstmt.setInt(2, user_id);
-			System.out.println(pstmt.executeUpdate());
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, commentId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		};
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean clearComment(String userName) {
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		UserDAOImpl ui=new UserDAOImpl();
-		int user_id=ui.getUserId(userName);
-		String sql="delete from comments where user_id=?";
+	public boolean clearComment(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from comments where user_id_from = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, user_id);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		};
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override

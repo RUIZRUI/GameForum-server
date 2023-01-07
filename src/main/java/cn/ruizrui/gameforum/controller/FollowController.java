@@ -57,4 +57,18 @@ public class FollowController {
         message.put("result", result);
         return message.toJSONString();
     }
+
+    /**
+     * 取消关注
+     * @param idolUserId
+     * @param fanUserId
+     * @return
+     */
+    @RequestMapping(value = "/cancelFollow", method = RequestMethod.POST)
+    public String cancelFollow(@RequestParam int idolUserId, @RequestParam int fanUserId){
+        String result = followService.cancelFollow(idolUserId, fanUserId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

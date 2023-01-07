@@ -43,8 +43,8 @@ public class Forum {
 			System.out.println(cs.get(i).getComment_name());
 		}
 		*/
-		ProxyUser p=new ProxyUser("管理员");
-		System.out.println(p.cleanCommentFromMe("54321"));
+		/* ProxyUser p=new ProxyUser("管理员");
+		System.out.println(p.cleanCommentFromMe("54321")); */
 		
 		/*
 		 * 	public UserEntity getUserData(String userName);

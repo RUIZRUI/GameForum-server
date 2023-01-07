@@ -82,4 +82,31 @@ public class CommentController {
         }
         return message.toJSONString();
     }
+
+    /**
+     * 删除评论
+     * @param commentId
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
+    public String deleteComment(@RequestParam int commentId, @RequestParam int userId){
+        String result = commentService.deleteComment(commentId, userId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
+
+    /**
+     * 清空用户评论
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "/clearCommentByUser", method = RequestMethod.POST)
+    public String clearCommentByUser(@RequestParam int userId){
+        String result = commentService.clearCommentByUser(userId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

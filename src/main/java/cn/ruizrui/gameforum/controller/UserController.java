@@ -87,4 +87,19 @@ public class UserController {
         message.put("result", result);
         return message.toJSONString();
     }
+
+    /**
+     * 管理员删除用户
+     * @param userId
+     * @param userName
+     * @param deletedUserId
+     * @return
+     */
+    @RequestMapping(value = "/userDelete", method = RequestMethod.POST)
+    public String userDelete(@RequestParam int userId, @RequestParam String userName, @RequestParam int deletedUserId){
+        String result = userService.userDelete(userId, userName, deletedUserId);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

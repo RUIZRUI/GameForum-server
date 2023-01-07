@@ -20,23 +20,25 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		String game_id = null;
 		String game_name = null;
 		String game_type = null;
 		String game_platform = null;
 		String game_belong = null;
 		String game_img = null;
-		String sql = "select game_name,game_type,game_platform,game_belong,game_img from collection where user_id=?";
+		String sql = "select game_id, game_name, game_type, game_platform, game_belong, game_img from collection where user_id=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				game_id = rs.getString("game_id");
 				game_name = rs.getString("game_name");
 				game_type = rs.getString("game_type");
 				game_platform = rs.getString("game_platform");
 				game_belong = rs.getString("game_belong");
 				game_img = rs.getString("game_img");
-				CollectInfo c = new CollectInfo(game_name,game_type,game_img,game_platform,game_belong);
+				CollectInfo c = new CollectInfo(game_id, game_name, game_type, game_img, game_platform, game_belong);
 				collections.add(c);
 			}
 		}catch(SQLException e) {
@@ -47,40 +49,40 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 	}
 
 	@Override
-	public boolean cancelCollection(String userName, String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from collection where game_name=? and user_name=?";
+	public boolean cancelCollection(int userId, String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from collection where user_id=? and game_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,gameName);
-			pstmt.setString(2, userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.setString(2, gameId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
-	public boolean clearCollection(String userName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from collection where user_name=?";
+	public boolean clearCollection(int userId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from collection where user_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		closeAll(con,pstmt,rs);
-		return true;
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	public boolean addCollection(int userId, String gameId) {
@@ -140,6 +142,28 @@ public class CollectDAOImpl extends baseDAO implements CollectDAO{
 			e.printStackTrace();
 		}
 		closeAll(conn, pst, null);
+		return result;
+	}
+
+	@Override
+	public boolean isExistCollection(int userId, String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		boolean result = false;
+		String sql = "select * from collection where user_id = ? and game_id = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.setString(2, gameId);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		closeAll(conn, pst, rs);
 		return result;
 	}
 }

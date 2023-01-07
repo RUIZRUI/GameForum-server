@@ -14,7 +14,7 @@ public interface UserDAO {
 	public int getUserNumber();
 	public boolean setStatusOn(String userName);
 	public boolean setStatusDown(String userName);
-	public boolean deleteUser(String userName);
+	public boolean deleteUser(int userId);
 	public boolean promoteUser(String userName);
 	public boolean setUserAvater(String userName,String imgUrl);
 	public List<User> getTotalUsers();

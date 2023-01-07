@@ -40,4 +40,14 @@ public class FollowService {
     public String followUser(int idolUserId, int fanUserId){
         return proxy.followUser(idolUserId, fanUserId);
     }
+
+    /**
+     * 取消关注
+     * @param idolUserId
+     * @param fanUserId
+     * @return
+     */
+    public String cancelFollow(int idolUserId, int fanUserId){
+        return proxy.cancelFollow(idolUserId, fanUserId);
+    }
 }
