@@ -302,7 +302,7 @@ create table if not exists login_log(
 -- 对于游戏名game_name, 单机:s_game_name, 安卓:a_game_name, 苹果:i_game_name, 网页:o_game_name
 create table if not exists game_introduction(
 	`game_id` varchar(255) primary key,
-	`game_name` varchar(255) not null unique,
+	`game_name` varchar(255) not null unique,    -- [TODO] 不应该 unique
 	`content` Text,
 	index index_id(`game_id`)		-- 建立索引，优化
 ) engine=InnoDB;
@@ -313,7 +313,7 @@ create table if not exists game_introduction(
 -- 创建基本游戏表
 create table if not exists base_game(
 	`game_id` varchar(255) primary key,
-	`game_name` varchar(255) not null,		-- 不设为 unqiue
+	`game_name` varchar(255) not null,		-- 不设为 unique
 	`game_belong` varchar(255) not null 	-- 单机游戏 | 安卓游戏 | 苹果游戏 | 网页游戏
 )
 

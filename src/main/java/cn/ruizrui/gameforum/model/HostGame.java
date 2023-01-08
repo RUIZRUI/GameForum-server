@@ -1,4 +1,5 @@
 package cn.ruizrui.gameforum.model;
+
 public class HostGame {
 	protected String game_id;
 	protected String game_name;

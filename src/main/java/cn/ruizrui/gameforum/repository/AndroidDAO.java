@@ -6,11 +6,11 @@ public interface AndroidDAO {
 	ArrayList<AndroidGame>  getAllGames();
 	AndroidGame getGameById(String gameId);
 	ArrayList<AndroidGame> getGameByType(String game_type);
-	void addGame(AndroidGame game);
+	boolean addGame(AndroidGame androidGame);
 	ArrayList<AndroidGame> getGameByTime();
 	ArrayList<AndroidGame> getGameByRaterNum();
 	ArrayList<AndroidGame> getGameByScore();
-	boolean deleteGame(String gameName);
+	boolean deleteGame(String gameId);
 	int getGameNumber();
 	String getGameIdByName(String gameName);
 }

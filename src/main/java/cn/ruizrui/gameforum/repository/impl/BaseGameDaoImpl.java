@@ -30,4 +30,22 @@ public class BaseGameDaoImpl extends baseDAO implements BaseGameDao {
         closeAll(conn, pst, rs);
         return gameBelong;
     }
+
+    @Override
+    public boolean deleteGameById(String gameId) {
+        Connection conn = getConnection();
+        PreparedStatement pst = null;
+        boolean result = false;
+        String sql = "delete from base_game where game_id = ?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, gameId);
+            pst.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeAll(conn, pst, null);
+        return result;
+    }
 }

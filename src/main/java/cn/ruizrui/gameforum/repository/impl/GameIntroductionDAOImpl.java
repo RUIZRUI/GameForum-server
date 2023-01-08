@@ -1,5 +1,6 @@
 package cn.ruizrui.gameforum.repository.impl;
 
+import cn.ruizrui.gameforum.model.GameIntroduction;
 import cn.ruizrui.gameforum.repository.baseDAO;
 import cn.ruizrui.gameforum.repository.GameIntroductionDAO;
 
@@ -31,5 +32,43 @@ public class GameIntroductionDAOImpl extends baseDAO implements GameIntroduction
         }
         closeAll(conn, pst, rs);
         return content;
+    }
+
+    @Override
+    public boolean addGameIntroduction(GameIntroduction gameIntroduction) {
+        Connection conn = getConnection();
+        PreparedStatement pst = null;
+        boolean result = false;
+        String sql = "insert into game_introduction(game_id, game_name, content) values (?, ?, ?)";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, gameIntroduction.getGame_id());
+            pst.setString(2, gameIntroduction.getGame_name());
+            pst.setString(3, gameIntroduction.getContent());
+            pst.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeAll(conn, pst, null);
+        return result;
+    }
+
+    @Override
+    public boolean deleteGameIntroductionById(String gameId) {
+        Connection conn = getConnection();
+        PreparedStatement pst = null;
+        boolean result = false;
+        String sql = "delete from game_introduction where game_id = ?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, gameId);
+            pst.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeAll(conn, pst,  null);
+        return result;
     }
 }

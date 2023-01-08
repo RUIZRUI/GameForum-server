@@ -9,6 +9,7 @@ import cn.ruizrui.gameforum.proxy.UserInterface;
 import cn.ruizrui.gameforum.repository.*;
 import cn.ruizrui.gameforum.repository.impl.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,15 +17,11 @@ import java.util.List;
 public class GameService {
 
     private UserInterface proxy = new ProxyUser("用户");
-
+    private UserInterface admin = new ProxyUser("管理员");
     private SingleDAO singleDAO = new SingleDAOImpl();
-
     private AndroidDAO androidDAO = new AndroidDAOImpl();
-
     private IOSDAO iosDAO = new IOSDAOImpl();
-
     private OnlineDAO onlineDAO = new OnlineDAOImpl();
-
     private GameIntroductionDAO gameIntroductionDAO = new GameIntroductionDAOImpl();
 
     /**
@@ -162,5 +159,43 @@ public class GameService {
      */
     public OnlineGame getOnlineGame(String gameId){
         return onlineDAO.getGameById(gameId);
+    }
+
+    /**
+     * 删除游戏
+     * @param userId
+     * @param userName
+     * @param gameName
+     * @param gameBelong
+     * @return
+     */
+    public String gameDelete(int userId, String userName, String gameName, String gameBelong){
+        return admin.deleteGame(gameName, gameBelong);
+    }
+
+    /**
+     * 发布游戏
+     * @param userId
+     * @param userName
+     * @param gameName
+     * @param gameBelong
+     * @param gameType
+     * @param gameRelease
+     * @param gameReleaseDate
+     * @param gameArrangeTime
+     * @param gamePlatform
+     * @param gameWebsite
+     * @param gameLabel
+     * @param gameLanguage
+     * @param gameScore
+     * @param gameRaterNum
+     * @param gameImg
+     * @return
+     */
+    public String gamePublish(int userId, String userName, String gameName, String gameBelong, String gameType, String gameRelease,
+                              String gameReleaseDate, String gameArrangeTime, String gamePlatform, String gameWebsite,
+                              String gameLabel, String gameLanguage, float gameScore, Integer gameRaterNum, String gameImg){
+        return admin.publishGame(userId, userName, gameName, gameBelong, gameType, gameRelease, gameReleaseDate,
+                gameArrangeTime, gamePlatform, gameWebsite, gameLabel, gameLanguage, gameScore, gameRaterNum, gameImg);
     }
 }

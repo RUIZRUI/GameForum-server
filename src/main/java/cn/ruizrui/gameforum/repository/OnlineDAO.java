@@ -7,11 +7,11 @@ public interface OnlineDAO {
 	OnlineGame getGameById(String gameId);
 	ArrayList<OnlineGame> getGameByType(String game_type);
 	ArrayList<OnlineGame> getGameByDevelop(String game_develop);
-	void addGame(OnlineGame game);
+	boolean addGame(OnlineGame onlineGame);
 	ArrayList<OnlineGame> getGameByHopeNum();
 	ArrayList<OnlineGame> getGameByRaterNum();
 	ArrayList<OnlineGame> getGameByScore();
-	boolean deleteGame(String gameName);
+	boolean deleteGame(String gameId);
 	int getGameNumber();
 	String getGameIdByName(String gameName);
 }

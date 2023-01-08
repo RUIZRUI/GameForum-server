@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.ArrayList;
 import cn.ruizrui.gameforum.repository.*;
 import cn.ruizrui.gameforum.model.AndroidGame;
@@ -115,30 +116,34 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
     }
 
 	@Override
-	public void addGame(AndroidGame game) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="insert into android_game(game_id,game_name,game_slogan,game_version,game_platform,game_type,"
-				+ "game_release_date,game_release,game_language,game_score,game_rater_num,game_img) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+	public boolean addGame(AndroidGame androidGame) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "insert into android_game(game_id, game_name, game_slogan, game_version, game_platform, game_type, " +
+				"game_release_date, game_release, game_language, game_score, game_rater_num, game_img) " +
+				"values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,game.getGame_id());
-			pstmt.setString(2, game.getGame_name());
-			pstmt.setString(3,game.getGame_slogan());
-			pstmt.setString(4,game.getGame_version());
-			pstmt.setString(5, game.getGame_platform());
-			pstmt.setString(6,game.getGame_type());
-			pstmt.setDate(7, game.getGame_release_date());
-			pstmt.setString(8,game.getGame_release());
-			pstmt.setString(9, game.getGame_language());
-			pstmt.setDouble(10, game.getGame_score());
-			pstmt.setInt(11, game.getGame_rater_num());
-			pstmt.setString(12, game.getGame_img());
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, androidGame.getGame_id());
+			pst.setString(2, androidGame.getGame_name());
+			pst.setString(3, androidGame.getGame_slogan());
+			pst.setString(4, androidGame.getGame_version());
+			pst.setString(5, androidGame.getGame_platform());
+			pst.setString(6, androidGame.getGame_type());
+			pst.setDate(7, new Date(androidGame.getGame_release_date().getTime()));
+			pst.setString(8, androidGame.getGame_release());
+			pst.setString(9, androidGame.getGame_language());
+			pst.setDouble(10, androidGame.getGame_score());
+			pst.setInt(11, androidGame.getGame_rater_num());
+			pst.setString(12, androidGame.getGame_img());
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -247,20 +252,21 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 	}
 
 	@Override
-	public boolean deleteGame(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from android_game where game_name=?";
+	public boolean deleteGame(String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from android_game where game_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return true;
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -287,25 +293,23 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public String getGameIdByName(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select game_id from android_game where game_name=?";
-		String game_id=null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String gameId = null;
+		String sql = "select game_id from android_game where game_name = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameName);
+			rs = pst.executeQuery();
 			if(rs.next()) {
-				game_id=rs.getString(1);
-			}else {
-					return null;
+				gameId = rs.getString("game_id");
 			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return game_id;
+		}
+		closeAll(conn, pst, rs);
+		return gameId;
 	}
 
 }

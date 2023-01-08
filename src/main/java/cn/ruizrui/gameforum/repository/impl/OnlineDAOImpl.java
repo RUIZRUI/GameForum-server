@@ -150,31 +150,35 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 	}
 
 	@Override
-	public void addGame(OnlineGame game) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="insert into ios_game(game_id,game_name,game_hope_num,game_type,game_frame,game_develop,"
-				+ "game_operator,game_website,game_status,game_label,game_score,game_rater_num,game_img) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	public boolean addGame(OnlineGame onlineGame) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "insert into online_game(game_id, game_name, game_hope_num, game_type, game_frame, game_develop, " +
+				"game_operator, game_website, game_status, game_label, game_score, game_rater_num, game_img) " +
+				"values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,game.getGame_id());
-			pstmt.setString(2, game.getGame_name());
-			pstmt.setInt(3,game.getGame_rater_num());
-			pstmt.setString(4,game.getGame_type());
-			pstmt.setString(5, game.getGame_frame());
-			pstmt.setString(6,game.getGame_develop());
-			pstmt.setString(7, game.getGame_operator());
-			pstmt.setString(8,game.getGame_website());
-			pstmt.setString(9, game.getGame_status());
-			pstmt.setString(10, game.getGame_label());
-			pstmt.setDouble(11, game.getGame_score());
-			pstmt.setInt(12, game.getGame_rater_num());
-			pstmt.setString(13, game.getGame_img());
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, onlineGame.getGame_id());
+			pst.setString(2, onlineGame.getGame_name());
+			pst.setInt(3, onlineGame.getGame_hope_num());
+			pst.setString(4, onlineGame.getGame_type());
+			pst.setString(5, onlineGame.getGame_frame());
+			pst.setString(6, onlineGame.getGame_develop());
+			pst.setString(7, onlineGame.getGame_operator());
+			pst.setString(8, onlineGame.getGame_website());
+			pst.setString(9, onlineGame.getGame_status());
+			pst.setString(10, onlineGame.getGame_label());
+			pst.setDouble(11, onlineGame.getGame_score());
+			pst.setInt(12, onlineGame.getGame_rater_num());
+			pst.setString(13, onlineGame.getGame_img());
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -286,20 +290,21 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 	}
 
 	@Override
-	public boolean deleteGame(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from online_game where game_name=?";
+	public boolean deleteGame(String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from online_game where game_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return true;
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -325,25 +330,23 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 	}
 	@Override
 	public String getGameIdByName(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select game_id from online_game where game_name=?";
-		String game_id=null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String gameId = null;
+		String sql = "select game_id from online_game where game_name = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameName);
+			rs = pst.executeQuery();
 			if(rs.next()) {
-				game_id=rs.getString(1);
-			}else {
-				return null;
+				gameId = rs.getString("game_id");
 			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return game_id;
+		}
+		closeAll(conn, pst, rs);
+		return gameId;
 	}
 
 

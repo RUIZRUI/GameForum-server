@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.ruizrui.gameforum.model.*;
-import cn.ruizrui.gameforum.repository.impl.CollectDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.CommentDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.LoginLogDAOImpl;
-import cn.ruizrui.gameforum.repository.impl.RelationShipDAOImp;
-import cn.ruizrui.gameforum.repository.impl.UserDAOImpl;
+import cn.ruizrui.gameforum.repository.BaseGameDao;
+import cn.ruizrui.gameforum.repository.impl.*;
 import cn.ruizrui.gameforum.helper.GameHelper;
 
 public class RealUser implements UserInterface {
 
 	List<User> fans = new ArrayList<User>();
-	RelationShipDAOImp ri=new RelationShipDAOImp();
-	CollectDAOImpl ci=new CollectDAOImpl();
-	CommentDAOImpl cmi=new CommentDAOImpl();
-	UserDAOImpl ui=new UserDAOImpl();
-	GameHelper jg=new GameHelper();
-	LoginLogDAOImpl li=new LoginLogDAOImpl();
+	RelationShipDAOImp ri = new RelationShipDAOImp();
+	CollectDAOImpl ci = new CollectDAOImpl();
+	CommentDAOImpl cmi = new CommentDAOImpl();
+	UserDAOImpl ui = new UserDAOImpl();
+	GameHelper gameHelper = new GameHelper();
+	LoginLogDAOImpl li = new LoginLogDAOImpl();
 	
 	public String userLogin(String userName,String userPass) {
 		
@@ -186,14 +183,19 @@ public class RealUser implements UserInterface {
 
 	@Override
 
-	public String deleteGame(String gameName, int belong) {
-
-		return jg.deleteGame(gameName, belong);
+	public String deleteGame(String gameName, String gameBelong) {
+		return GameHelper.deleteGame(gameName, gameBelong);
 	}
 
 	@Override
-	
+	public String publishGame(int userId, String userName, String gameName, String gameBelong, String gameType, String gameRelease,
+							  String gameReleaseDate, String gameArrangeTime, String gamePlatform, String gameWebsite,
+							  String gameLabel, String gameLanguage, float gameScore, Integer gameRaterNum, String gameImg){
+		return GameHelper.publishGame(gameName, gameBelong, gameType, gameRelease, gameReleaseDate, gameArrangeTime,
+				gamePlatform, gameWebsite, gameLabel, gameLanguage, gameScore, gameRaterNum, gameImg);
+	}
 
+	@Override
 	public int getRegisterPeopleNum() {
 
 		return ui.getUserNumber();
@@ -217,7 +219,7 @@ public class RealUser implements UserInterface {
 
 		int num=0;
 		for(int i=0;i<4;i++) {
-			num+=jg.getGameNum(i);
+			num += gameHelper.getGameNum(i);
 		}
 		return num;
 	}
@@ -226,28 +228,28 @@ public class RealUser implements UserInterface {
 
 	public int getAndroidGameNum() {
 
-		return jg.getGameNum(1);
+		return gameHelper.getGameNum(1);
 	}
 
 	@Override
 
 	public int getIOSGameNum() {
 
-		return jg.getGameNum(2);
+		return gameHelper.getGameNum(2);
 	}
 
 	@Override
 
 	public int getOnlineGameNum() {
 
-		return jg.getGameNum(3);
+		return gameHelper.getGameNum(3);
 	}
 
 	@Override
 
 	public int getSingleGameNum() {
 
-		return jg.getGameNum(0);
+		return gameHelper.getGameNum(0);
 	}
 
 	@Override

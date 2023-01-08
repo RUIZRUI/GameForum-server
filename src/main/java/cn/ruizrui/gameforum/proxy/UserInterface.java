@@ -43,7 +43,11 @@ public interface UserInterface {
 	public boolean commentGame(int userIdFrom, String gameId, String content);
 	
 	//版主
-	public String deleteGame(String gameName,int belong);
+	public String deleteGame(String gameName, String gameBelong);
+
+	public String publishGame(int userId, String userName, String gameName, String gameBelong, String gameType, String gameRelease,
+							  String gameReleaseDate, String gameArrangeTime, String gamePlatform, String gameWebsite,
+							  String gameLabel, String gameLanguage, float gameScore, Integer gameRaterNum, String gameImg);
 	
 	
 

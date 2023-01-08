@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,32 +159,35 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 	
 
 	@Override
-	public void addGame(SingleGame game) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="insert into ios_game(game_id,game_name,game_type,game_release,game_release_date,game_arrange_date,"
-				+ "game_platform,game_website,game_label,game_language,game_score,game_rater_num,game_img) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+	public boolean addGame(SingleGame singleGame) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "insert into single_game(game_id, game_name, game_type, game_release, game_release_date, game_arrange_date, " +
+				"game_platform, game_website, game_label, game_language, game_score, game_rater_num, game_img) " +
+				"values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,game.getGame_id());
-			pstmt.setString(2, game.getGame_name());
-			pstmt.setString(3,game.getGame_type());
-			pstmt.setString(4,game.getGame_release());
-			pstmt.setDate(5, game.getGame_release_date());
-			pstmt.setDate(6,game.getGame_arrange_date());
-			pstmt.setDate(7, game.getGame_release_date());
-			pstmt.setString(8,game.getGame_platform());
-			pstmt.setString(9, game.getGame_website());
-			pstmt.setString(10, game.getGame_label());
-			pstmt.setString(11, game.getGame_language());
-			pstmt.setInt(12, game.getGame_rater_num());
-			pstmt.setString(13, game.getGame_img());
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, singleGame.getGame_id());
+			pst.setString(2, singleGame.getGame_name());
+			pst.setString(3, singleGame.getGame_type());
+			pst.setString(4, singleGame.getGame_release());
+			pst.setDate(5, new Date(singleGame.getGame_release_date().getTime()));
+			pst.setDate(6, new Date(singleGame.getGame_arrange_date().getTime()));
+			pst.setString(7, singleGame.getGame_platform());
+			pst.setString(8, singleGame.getGame_website());
+			pst.setString(9, singleGame.getGame_label());
+			pst.setString(10, singleGame.getGame_language());
+			pst.setFloat(11, singleGame.getGame_score());
+			pst.setInt(12, singleGame.getGame_rater_num());
+			pst.setString(13, singleGame.getGame_img());
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -292,20 +296,21 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 	}
 
 	@Override
-	public boolean deleteGame(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="delete from single_game where game_name=?";
+	public boolean deleteGame(String gameId) {
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		boolean result = false;
+		String sql = "delete from single_game where game_id = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			pstmt.executeUpdate();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameId);
+			pst.executeUpdate();
+			result = true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return true;
+		}
+		closeAll(conn, pst, null);
+		return result;
 	}
 
 	@Override
@@ -331,27 +336,23 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 	}
 	@Override
 	public String getGameIdByName(String gameName) {
-		// TODO �Զ����ɵķ������
-		Connection con=getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select game_id from single_game where game_name=?";
-		String game_id=null;
+		Connection conn = getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String gameId = null;
+		String sql = "select game_id from single_game where game_name = ?";
 		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gameName);
-			rs=pstmt.executeQuery();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gameName);
+			rs = pst.executeQuery();
 			if(rs.next()) {
-				System.out.println("无");
-				game_id=rs.getString(1);
-			}else {
-
-				return null;
+				gameId = rs.getString("game_id");
 			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
-		}closeAll(con,pstmt,rs);
-		return game_id;
+		}
+		closeAll(conn, pst, rs);
+		return gameId;
 	}
 
 

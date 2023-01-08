@@ -6,11 +6,11 @@ public interface IOSDAO {
     public ArrayList<IOSGame> getAllGames();
     public IOSGame getGameById(String gameId);
     public ArrayList<IOSGame> getGameByType(String game_type);
-    public void addGame(IOSGame game);
+    public boolean addGame(IOSGame iosGame);
     public ArrayList<IOSGame> getGameByTime();
     public	ArrayList<IOSGame> getGameByRaterNum();
     public ArrayList<IOSGame> getGameByScore();
-    public boolean deleteGame(String gameName);
+    public boolean deleteGame(String gameId);
 	int getGameNumber();
 	String getGameIdByName(String gameName);
 }

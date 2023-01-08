@@ -151,4 +151,52 @@ public class GameController {
         message.put("onlineGame", onlineGame);
         return message.toJSONString();
     }
+
+    /**
+     * 删除游戏
+     * @param userId
+     * @param userName
+     * @param gameName
+     * @param gameBelong
+     * @return
+     */
+    @RequestMapping(value = "/gameDelete", method = RequestMethod.POST)
+    public String gameDelete(@RequestParam int userId, @RequestParam String userName, @RequestParam String gameName, @RequestParam String gameBelong){
+        String result = gameService.gameDelete(userId, userName, gameName, gameBelong);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
+
+    /**
+     * 发布游戏
+     * @param userId
+     * @param userName
+     * @param gameName
+     * @param gameBelong
+     * @param gameType
+     * @param gameRelease
+     * @param gameReleaseDate
+     * @param gameArrangeTime
+     * @param gamePlatform
+     * @param gameWebsite
+     * @param gameLabel
+     * @param gameLanguage
+     * @param gameScore
+     * @param gameRaterNum
+     * @param gameImg
+     * @return
+     */
+    @RequestMapping(value = "/gamePublish", method = RequestMethod.POST)
+    public String gamePublish(@RequestParam int userId, @RequestParam String userName, @RequestParam String gameName,
+                              @RequestParam String gameBelong, @RequestParam String gameType, @RequestParam String gameRelease,
+                              @RequestParam String gameReleaseDate, @RequestParam String gameArrangeTime, @RequestParam String gamePlatform,
+                              @RequestParam String gameWebsite, @RequestParam String gameLabel, @RequestParam String gameLanguage,
+                              @RequestParam float gameScore, @RequestParam Integer gameRaterNum, @RequestParam String gameImg){
+        String result = gameService.gamePublish(userId, userName, gameName, gameBelong, gameType, gameRelease, gameReleaseDate,
+                gameArrangeTime, gamePlatform, gameWebsite, gameLabel, gameLanguage, gameScore, gameRaterNum, gameImg);
+        JSONObject message = new JSONObject();
+        message.put("result", result);
+        return message.toJSONString();
+    }
 }

@@ -137,15 +137,27 @@ public class ProxyUser implements UserInterface {
 			return "请登录";
 		}
 	}
-	//�����еĹ���
-	public String deleteGame(String gameName,int belong) {
-		if(!priority.equals("游客")&&!priority.equals("用户")) {
-			return ru.deleteGame(gameName, belong);
+	// 版主
+	public String deleteGame(String gameName, String gameBelong) {
+		if(!priority.equals("游客") && !priority.equals("用户")) {
+			return ru.deleteGame(gameName, gameBelong);
 		}else {
-			return "请登录";
+			return "仅管理员可以删除游戏";
 		}
 	}
-	
+
+	@Override
+	public String publishGame(int userId, String userName, String gameName, String gameBelong, String gameType, String gameRelease,
+							  String gameReleaseDate, String gameArrangeTime, String gamePlatform, String gameWebsite,
+							  String gameLabel, String gameLanguage, float gameScore, Integer gameRaterNum, String gameImg) {
+		if(!priority.equals("游客") && !priority.equals("用户")) {
+			return ru.publishGame(userId, userName, gameName, gameBelong, gameType, gameRelease, gameReleaseDate,
+					gameArrangeTime, gamePlatform, gameWebsite, gameLabel, gameLanguage, gameScore, gameRaterNum, gameImg);
+		} else {
+			return "仅管理员可以发布游戏";
+		}
+	}
+
 	// 管理员权限
 	public int getRegisterPeopleNum() {
 		if(priority.equals("管理员")) {

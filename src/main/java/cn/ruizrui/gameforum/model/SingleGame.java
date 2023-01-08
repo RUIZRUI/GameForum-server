@@ -1,6 +1,6 @@
 package cn.ruizrui.gameforum.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class SingleGame extends HostGame{
 	private String game_platform;
