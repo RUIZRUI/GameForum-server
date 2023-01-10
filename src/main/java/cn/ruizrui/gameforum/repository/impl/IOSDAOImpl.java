@@ -15,7 +15,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public ArrayList<IOSGame> getAllGames() {
-		// TODO �Զ����ɵķ������
 		ArrayList<IOSGame> allGames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -86,7 +85,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public ArrayList<IOSGame> getGameByType(String game_type) {
-		// TODO �Զ����ɵķ������
 		ArrayList<IOSGame> typeGames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -153,7 +151,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public ArrayList<IOSGame> getGameByTime() {
-		// TODO �Զ����ɵķ������
 		ArrayList<IOSGame> timegames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -187,7 +184,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public ArrayList<IOSGame> getGameByRaterNum() {
-		// TODO �Զ����ɵķ������
 		ArrayList<IOSGame> raternumgames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -221,7 +217,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public ArrayList<IOSGame> getGameByScore() {
-		// TODO �Զ����ɵķ������
 		ArrayList<IOSGame> scoregames=new ArrayList<IOSGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -273,7 +268,6 @@ public class IOSDAOImpl extends baseDAO implements IOSDAO {
 
 	@Override
 	public int getGameNumber() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

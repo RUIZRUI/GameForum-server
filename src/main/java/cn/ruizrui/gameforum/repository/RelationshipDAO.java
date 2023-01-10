@@ -5,9 +5,9 @@ import java.util.List;
 import cn.ruizrui.gameforum.model.RelationUser;
 
 public interface RelationshipDAO {
-	public List<RelationUser> getMyFans(int userId);
-	public List<RelationUser> getMyFollow(int userId);
-	public boolean cancelFollow(int idolUserId, int fanUserId);
-	public boolean followUser(int idolUserId, int fanUserId);
-	public boolean isExistFollow(int idolUserId, int fanUserId);
+	List<RelationUser> getMyFans(int userId);
+	List<RelationUser> getMyFollow(int userId);
+	boolean cancelFollow(int idolUserId, int fanUserId);
+	boolean followUser(int idolUserId, int fanUserId);
+	boolean isExistFollow(int idolUserId, int fanUserId);
 }

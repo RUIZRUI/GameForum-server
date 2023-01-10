@@ -7,13 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cn.ruizrui.gameforum.repository.baseDAO;
-import cn.ruizrui.gameforum.repository.loginLogDAO;
+import cn.ruizrui.gameforum.repository.LoginLogDAO;
 
-public class LoginLogDAOImpl extends baseDAO implements loginLogDAO{
+public class LoginLogDAOImpl extends baseDAO implements LoginLogDAO {
 
 	@Override
 	public int getDay() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -37,7 +36,6 @@ public class LoginLogDAOImpl extends baseDAO implements loginLogDAO{
 
 	@Override
 	public int getMonth() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -64,7 +62,6 @@ public class LoginLogDAOImpl extends baseDAO implements loginLogDAO{
 	public boolean log(String userName) {
 		UserDAOImpl ui=new UserDAOImpl();
 		int user_id=ui.getUserId(userName);
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

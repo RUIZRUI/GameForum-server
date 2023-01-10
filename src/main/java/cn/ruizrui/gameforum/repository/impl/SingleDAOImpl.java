@@ -16,7 +16,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public ArrayList<SingleGame> getAllGames() {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> allGames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -51,7 +50,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public ArrayList<SingleGame> getGameByType(String game_type) {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> typeGames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -87,7 +85,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public ArrayList<SingleGame> getGameByDevelop(String game_develop) {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> developGames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -115,7 +112,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 				developGames.add(s_game);
 		}
 	}catch(SQLException e) {
-		System.out.println("��ȡ���е�����Ϸʱ����");
 		e.printStackTrace();
 	}
 		closeAll(con,pstmt,rs);
@@ -192,7 +188,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public List<SingleGame> getSingleGameByTime() {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> timegames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -227,7 +222,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public List<SingleGame> getSingleGameByRaterNum() {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> timegames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -262,7 +256,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public List<SingleGame> getSingleGameByScore() {
-		// TODO �Զ����ɵķ������
 		ArrayList<SingleGame> timegames=new ArrayList<SingleGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -315,7 +308,6 @@ public class SingleDAOImpl extends baseDAO implements SingleDAO{
 
 	@Override
 	public int getGameNumber() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

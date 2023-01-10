@@ -3,9 +3,9 @@ import java.util.List;
 
 import cn.ruizrui.gameforum.model.CollectInfo;
 public interface CollectDAO {
-	public List<CollectInfo> getCollectionByUserId(int userId);
-	public boolean cancelCollection(int userId, String gameId);
-	public boolean clearCollection(int userId);
-	public boolean addCollection(int userId, String gameId);
-	public boolean isExistCollection(int userId, String gameId);
+	List<CollectInfo> getCollectionByUserId(int userId);
+	boolean cancelCollection(int userId, String gameId);
+	boolean clearCollection(int userId);
+	boolean addCollection(int userId, String gameId);
+	boolean isExistCollection(int userId, String gameId);
 }

@@ -5,15 +5,15 @@ import java.util.List;
 import cn.ruizrui.gameforum.model.SingleGame;
 
 public interface SingleDAO {
-	public ArrayList<SingleGame> getAllGames();
-	public ArrayList<SingleGame> getGameByType(String game_type);
-	public ArrayList<SingleGame> getGameByDevelop(String game_develop);
-	public SingleGame getGameById(String gameId);
-	public boolean addGame(SingleGame singleGame);
-	public List<SingleGame> getSingleGameByTime();
-	public List<SingleGame> getSingleGameByRaterNum();
-	public List<SingleGame> getSingleGameByScore();
-	public boolean deleteGame(String gameId);
-	public int getGameNumber();
+	ArrayList<SingleGame> getAllGames();
+	ArrayList<SingleGame> getGameByType(String game_type);
+	ArrayList<SingleGame> getGameByDevelop(String game_develop);
+	SingleGame getGameById(String gameId);
+	boolean addGame(SingleGame singleGame);
+	List<SingleGame> getSingleGameByTime();
+	List<SingleGame> getSingleGameByRaterNum();
+	List<SingleGame> getSingleGameByScore();
+	boolean deleteGame(String gameId);
+	int getGameNumber();
 	String getGameIdByName(String gameName);
 }

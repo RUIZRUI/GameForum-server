@@ -165,7 +165,6 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO{
 
 	@Override
 	public boolean commentComment(String userName, int commentId,String content) {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -204,7 +203,6 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO{
 
 	@Override
 	public boolean likes(int commentId) {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -222,7 +220,6 @@ public class CommentDAOImpl extends baseDAO implements CommentDAO{
 
 	@Override
 	public boolean dislike(int commentId) {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

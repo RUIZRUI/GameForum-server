@@ -1,6 +1,6 @@
 package cn.ruizrui.gameforum.factory;
 import cn.ruizrui.gameforum.model.*;
-public class IosGameCreator extends MobileGameCreator{
+public class IOSGameCreator extends MobileGameCreator{
 
 	@Override
 	public MobileGame createMobileGame() {

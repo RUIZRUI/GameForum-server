@@ -12,7 +12,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public ArrayList<AndroidGame> getAllGames() {
-		// TODO �Զ����ɵķ������
 		ArrayList<AndroidGame> allGames=new ArrayList<AndroidGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -148,7 +147,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public ArrayList<AndroidGame> getGameByTime() {
-		// TODO �Զ����ɵķ������
 		ArrayList<AndroidGame> timegames=new ArrayList<AndroidGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -182,7 +180,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public ArrayList<AndroidGame> getGameByRaterNum() {
-		// TODO �Զ����ɵķ������
 		ArrayList<AndroidGame> raternumgames=new ArrayList<AndroidGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -207,9 +204,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 				a_game.setGame_img(rs.getString(12));
 				raternumgames.add(a_game);
 			}
-			/* for(int i=0;i<raternumgames.size();i++) {
-				System.out.println(raternumgames.get(i).getGame_rater_num());
-			} */
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -219,7 +213,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public ArrayList<AndroidGame> getGameByScore() {
-		// TODO �Զ����ɵķ������
 		ArrayList<AndroidGame> scoregames=new ArrayList<AndroidGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -271,7 +264,6 @@ public class AndroidDAOImpl extends baseDAO implements AndroidDAO {
 
 	@Override
 	public int getGameNumber() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

@@ -6,23 +6,23 @@ import cn.ruizrui.gameforum.model.RelationUser;
 import cn.ruizrui.gameforum.model.User;
 
 public interface UserDAO {
-	public User getByName(String userName);
-	public int getUserId(String userName);
-	public boolean addUser(User ue);
-	public boolean updateUser(User ue);
-	public String getUserName(int userId);
-	public int getUserNumber();
-	public boolean setStatusOn(String userName);
-	public boolean setStatusDown(String userName);
-	public boolean deleteUser(int userId);
-	public boolean promoteUser(String userName);
-	public boolean setUserAvater(String userName,String imgUrl);
-	public List<User> getTotalUsers();
-	public List<RelationUser> getAllUsers();
-	public boolean addFansNumber(int userId);
-	public boolean reduceFansNumber(int userId);
-	public boolean addFollowNumber(int userId);
-	public boolean reduceFollowNumber(int userId);
+	User getByName(String userName);
+	int getUserId(String userName);
+	boolean addUser(User ue);
+	boolean updateUser(User ue);
+	String getUserName(int userId);
+	int getUserNumber();
+	boolean setStatusOn(String userName);
+	boolean setStatusDown(String userName);
+	boolean deleteUser(int userId);
+	boolean promoteUser(String userName);
+	boolean setUserAvater(String userName,String imgUrl);
+	List<User> getTotalUsers();
+	List<RelationUser> getAllUsers();
+	boolean addFansNumber(int userId);
+	boolean reduceFansNumber(int userId);
+	boolean addFollowNumber(int userId);
+	boolean reduceFollowNumber(int userId);
 	
 	
 }

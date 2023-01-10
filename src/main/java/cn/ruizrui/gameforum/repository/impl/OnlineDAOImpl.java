@@ -13,7 +13,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getAllGame() {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> allGames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -82,7 +81,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getGameByType(String game_type) {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> typeGames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -116,7 +114,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getGameByDevelop(String game_develop) {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> developGames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -183,7 +180,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getGameByHopeNum() {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> timegames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -219,7 +215,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getGameByRaterNum() {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> raternumgames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -255,7 +250,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public ArrayList<OnlineGame> getGameByScore() {
-		// TODO �Զ����ɵķ������
 		ArrayList<OnlineGame> scoregames=new ArrayList<OnlineGame>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -309,7 +303,6 @@ public class OnlineDAOImpl extends baseDAO implements OnlineDAO{
 
 	@Override
 	public int getGameNumber() {
-		// TODO �Զ����ɵķ������
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

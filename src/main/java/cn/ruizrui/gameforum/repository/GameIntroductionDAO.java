@@ -4,7 +4,7 @@ import cn.ruizrui.gameforum.model.GameIntroduction;
 
 public interface GameIntroductionDAO {
 
-    public String getGameIntroduction(String gameId);
-    public boolean addGameIntroduction(GameIntroduction gameIntroduction);
-    public boolean deleteGameIntroductionById(String gameId);
+    String getGameIntroduction(String gameId);
+    boolean addGameIntroduction(GameIntroduction gameIntroduction);
+    boolean deleteGameIntroductionById(String gameId);
 }

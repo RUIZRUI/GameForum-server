@@ -71,7 +71,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 		return true;
 	}
 	public boolean addUserAll(User ue) {
-		// TODO ??????????????
 		LoginLogDAOImpl li=new LoginLogDAOImpl();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -103,7 +102,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean updateUser(User ue) {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -127,7 +125,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public int getUserId(String userName) {
-		// TODO ??????????????
 		int userid=0;
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -152,7 +149,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public String getUserName(int userId) {
-		// TODO ??????????????
 		String  user_name=null;
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
@@ -177,7 +173,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public int getUserNumber() {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -199,7 +194,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setStatusOn(String userName) {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -220,7 +214,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setStatusDown(String userName) {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -259,7 +252,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean promoteUser(String userName) {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -279,7 +271,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public boolean setUserAvater(String userName, String imgUrl) {
-		// TODO ??????????????
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -298,7 +289,6 @@ public class UserDAOImpl extends baseDAO implements UserDAO{
 
 	@Override
 	public List<User> getTotalUsers() {
-		// TODO ??????????????
 		ArrayList<User> allUsers=new ArrayList<User>();
 		Connection con=getConnection();
 		PreparedStatement pstmt=null;

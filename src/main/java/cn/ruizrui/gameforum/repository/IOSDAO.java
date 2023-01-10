@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 import cn.ruizrui.gameforum.model.IOSGame;
 public interface IOSDAO {
-    public ArrayList<IOSGame> getAllGames();
-    public IOSGame getGameById(String gameId);
-    public ArrayList<IOSGame> getGameByType(String game_type);
-    public boolean addGame(IOSGame iosGame);
-    public ArrayList<IOSGame> getGameByTime();
-    public	ArrayList<IOSGame> getGameByRaterNum();
-    public ArrayList<IOSGame> getGameByScore();
-    public boolean deleteGame(String gameId);
+    ArrayList<IOSGame> getAllGames();
+    IOSGame getGameById(String gameId);
+    ArrayList<IOSGame> getGameByType(String game_type);
+    boolean addGame(IOSGame iosGame);
+    ArrayList<IOSGame> getGameByTime();
+    ArrayList<IOSGame> getGameByRaterNum();
+    ArrayList<IOSGame> getGameByScore();
+    boolean deleteGame(String gameId);
 	int getGameNumber();
 	String getGameIdByName(String gameName);
 }
