@@ -52,6 +52,7 @@ public class UserController {
      * @param userName
      * @return
      */
+    // http://localhost:8080/gameforum/v1/user/getUserInfo
     @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
     public String getUserInfo(@RequestParam(value = "userName", required = true) String userName){
         User user = userService.getUser(userName);

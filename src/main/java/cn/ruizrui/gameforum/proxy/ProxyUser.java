@@ -21,7 +21,7 @@ public class ProxyUser implements UserInterface {
 	//�û����Բ鿴
 	public User getUserData(String userName) {
 		if(!priority.equals("游客")) {
-		return ru.getUserData(userName);
+			return ru.getUserData(userName);
 		}else 
 			return null;
 	}
